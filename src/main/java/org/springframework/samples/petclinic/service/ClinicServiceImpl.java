@@ -110,5 +110,8 @@ public class ClinicServiceImpl implements ClinicService {
 		return visitRepository.findByPetId(petId);
 	}
 
+	public void deleteById(Integer id) {
+		this.petRepository.deleteById(id);
+	}
 
 }
