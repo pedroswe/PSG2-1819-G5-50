@@ -30,9 +30,6 @@ import org.springframework.samples.petclinic.model.PetHotel;
  */
 public interface PetHotelRepository {
     Collection<PetHotel> findAll();
-    PetHotel save(PetHotel hotel);
+    void save(PetHotel hotel);
     void delete(Integer id);
-
-    
-
 }
