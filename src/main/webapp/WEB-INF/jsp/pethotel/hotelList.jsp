@@ -18,21 +18,21 @@
         </thead>
         <tbody>
         <c:forEach items="${petHotels}" var="room">
-            <tr>
-                <td>
-                    <c:out value="${room.pet.owner.firstName} ${room.pet.owner.lastName}"/>
-                </td>
-                <td>
-                    <c:out value="${room.pet.name}"/>
-                </td>
-                <td>
-                    <c:out value="${room.initDate}"/>
-                </td>
-                <td>
-                    <c:out value="${room.endDate}"/>
-                </td>
-            </tr>
-        </c:forEach>
+                <tr>
+                    <td>
+                        <c:out value="${room.pet.owner.firstName} ${room.pet.owner.lastName}"/>
+                    </td>
+                    <td>
+                        <c:out value="${room.pet.name}"/>
+                    </td>
+                    <td>
+                        <c:out value="${room.initDate}"/>
+                    </td>
+                    <td>
+                        <c:out value="${room.endDate}"/>
+                    </td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </petclinic:layout>

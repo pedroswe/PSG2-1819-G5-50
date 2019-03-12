@@ -16,7 +16,9 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Collection;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.PetHotel;
 import org.springframework.samples.petclinic.service.PetHotelService;
 import org.springframework.stereotype.Controller;
@@ -36,13 +38,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/pethotel")
 public class PetHotelController {
 
-	private static final String VIEWS_PET_HOTELS_LIST = "petHotel/list";    
-    private PetHotelService petHotelservice;
+	private static final String VIEWS_PET_HOTELS_LIST = "pethotel/hotelList";    
+    // private PetHotelService petHotelService;
+
+	// @Autowired
+	// public PetHotelController(PetHotelService petHotelService) {
+	// 	this.petHotelService = petHotelService;
+	// }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(ModelMap model) {
-		Collection<PetHotel> petHotels = petHotelservice.findAll();
-		model.put("petHotels", petHotels);
+	public String list(Map<String, Object> model) {
+		// Collection<PetHotel> petHotels = petHotelservice.findAll();
+		// model.put("petHotels", petHotels);
 		return VIEWS_PET_HOTELS_LIST;
 	}
 
