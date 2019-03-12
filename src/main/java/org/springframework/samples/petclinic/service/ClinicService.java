@@ -16,9 +16,6 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
-import java.util.Set;
-
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
@@ -55,4 +52,6 @@ public interface ClinicService {
     void deleteById(Integer id);
     
     void saveVet(Vet vet) throws DataAccessException;
+
+    Collection<Specialty> findSpecialtys() throws DataAccessException;
 }

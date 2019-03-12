@@ -16,7 +16,6 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
-import java.util.Set;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.BaseEntity;
@@ -50,5 +49,10 @@ public interface VetRepository {
      */
     void save(Vet vet) throws DataAccessException;
     
-
+    /**
+     * Retrieve all <code>Specialties</code> from the data store.
+     *
+     * @return a <code>Collection</code> of <code>Specialties</code>
+     */
+    Collection<Specialty> findSpecialtys() throws DataAccessException;
 }

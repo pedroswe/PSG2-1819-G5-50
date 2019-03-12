@@ -46,12 +46,18 @@ public class VetController {
     public VetController(ClinicService clinicService) {
         this.clinicService = clinicService;
     }
-    /*
-    @ModelAttribute("specialties")
-    public Collection <Specialty> populateSpecialties(){
-        return this.clinicService.findVetSpecialties();
+    // First option is to send all Specialties to the view by using this method
+    @ModelAttribute("_specialities")
+	public Collection<Specialty> populateSpecialtys() {
+		return this.clinicService.findSpecialtys();
+	}
+  /*
+    @InitBinder("vet")
+	public void initVetBinder(WebDataBinder dataBinder) {
+		dataBinder.setDisallowedFields("id");
     }
     */
+
     @RequestMapping(value = { "/vets.html"})
     public String showVetList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet objects
@@ -73,11 +79,32 @@ public class VetController {
         return vets;
     }
 
+
+    // CREATE
     @RequestMapping(value = "/vets/new", method = RequestMethod.GET)
     public String initCreationForm(Map<String, Object> model) {
+        // Second option is to send all Specialties inside this controller
+        Collection<Specialty> _specialties = this.clinicService.findSpecialtys();
         Vet vet = new Vet();
         model.put("vet", vet);
+        model.put("_specialties", _specialties);
         return VIEWS_VET_CREATE_OR_UPDATE_FORM;
     }
-
+    /*
+    // CREATE TO SAVE
+    @RequestMapping(value = "/vets/new", method = RequestMethod.POST)
+	public String processCreationForm(Vet vet, BindingResult result, ModelMap model) {
+		if (StringUtils.hasLength(vet.getFirstName()) && StringUtils.hasLength(vet.getLastName()) && vet.isNew() ) {
+			result.rejectValue("firstName", "duplicate", "already exists");
+		}
+		if (result.hasErrors()) {
+			model.put("vet", vet);
+			return VIEWS_VET_CREATE_OR_UPDATE_FORM;
+		} else {
+			Vet res = (Vet) vet;
+			this.clinicService.saveVet(res);
+			return "redirect:/vets/vetList";//modificado
+		}
+	}
+    */
 }

@@ -16,8 +16,6 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
@@ -120,6 +118,12 @@ public class ClinicServiceImpl implements ClinicService {
     @Transactional
     public void saveVet(Vet vet) throws DataAccessException {
         vetRepository.save(vet);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Specialty> findSpecialtys() throws DataAccessException {
+        return vetRepository.findSpecialtys();
     }
  
 }

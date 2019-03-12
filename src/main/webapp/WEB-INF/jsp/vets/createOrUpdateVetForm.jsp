@@ -17,7 +17,7 @@
             <petclinic:inputField label="Last Name" name="lastName"/>
             
             <div class="control-group">
-                <petclinic:selectField name="specialties" label="Specialties " names="${vet.specialties}" size="5"/>
+                <petclinic:selectField name="specialties" label="Specialties " names="${_specialties}" size="5"/>
             </div>
         </div>
         
