@@ -38,5 +38,6 @@ public interface VetRepository {
      */
     Collection<Vet> findAll() throws DataAccessException;
 
+    void deleteById(Integer id);
 
 }

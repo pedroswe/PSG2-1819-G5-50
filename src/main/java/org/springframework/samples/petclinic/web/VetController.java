@@ -21,7 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -31,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Arjen Poutsma
  */
 @Controller
+@RequestMapping(value = {"/vets", ""})
 public class VetController {
 
     private final ClinicService clinicService;
@@ -41,7 +44,7 @@ public class VetController {
         this.clinicService = clinicService;
     }
 
-    @RequestMapping(value = { "/vets.html"})
+    @RequestMapping(value = { "/list"}, method = RequestMethod.GET)
     public String showVetList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet objects
         // so it is simpler for Object-Xml mapping
@@ -62,5 +65,10 @@ public class VetController {
         return vets;
     }
 
+    @RequestMapping(value = "/{vetId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("vetId") Integer vetId) {
+    	this.clinicService.deleteByIdVet(vetId);
+    	return "redirect:/vets/list";
+    }
 
 }

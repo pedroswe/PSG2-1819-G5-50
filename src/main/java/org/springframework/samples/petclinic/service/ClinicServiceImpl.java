@@ -100,7 +100,6 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable(value = "vets")
     public Collection<Vet> findVets() throws DataAccessException {
         return vetRepository.findAll();
     }
@@ -110,8 +109,13 @@ public class ClinicServiceImpl implements ClinicService {
 		return visitRepository.findByPetId(petId);
 	}
 
-	public void deleteById(Integer id) {
+	public void deleteByIdPet(Integer id) {
 		this.petRepository.deleteById(id);
 	}
-
+	public void deleteByIdVet(Integer id) {
+		this.vetRepository.deleteById(id);
+	}
+	public void deleteOwnerById(Integer id) {
+		this.ownerRepository.deleteById(id);
+	}
 }

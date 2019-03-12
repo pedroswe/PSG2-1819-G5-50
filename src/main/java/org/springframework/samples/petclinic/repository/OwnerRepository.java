@@ -60,5 +60,5 @@ public interface OwnerRepository {
      */
     void save(Owner owner) throws DataAccessException;
 
-
+    void deleteById(Integer id);
 }
