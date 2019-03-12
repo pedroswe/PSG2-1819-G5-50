@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="petHotels">
+<!-- <petclinic:layout pageName="petHotels">
     <h2>Pet Hotel</h2>
 
     <table id="petHotel" class="table table-striped">
@@ -35,4 +35,4 @@
             </c:forEach>
         </tbody>
     </table>
-</petclinic:layout>
+</petclinic:layout> -->

@@ -38,17 +38,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/pethotel")
 public class PetHotelController {
 
-	private static final String VIEWS_PET_HOTELS_LIST = "pethotel/hotelList";    
-    // private PetHotelService petHotelService;
+    private static final String VIEWS_PET_HOTELS_LIST = "pethotel/list"; 
+       
+    private PetHotelService petHotelService;
 
-	// @Autowired
-	// public PetHotelController(PetHotelService petHotelService) {
-	// 	this.petHotelService = petHotelService;
-	// }
+	@Autowired
+	public PetHotelController(PetHotelService petHotelService) {
+		this.petHotelService = petHotelService;
+	}
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Map<String, Object> model) {
-		// Collection<PetHotel> petHotels = petHotelservice.findAll();
+		// Collection<PetHotel> petHotels = petHotelService.findAll();
 		// model.put("petHotels", petHotels);
 		return VIEWS_PET_HOTELS_LIST;
 	}
