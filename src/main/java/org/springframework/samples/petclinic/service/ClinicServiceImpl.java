@@ -121,11 +121,5 @@ public class ClinicServiceImpl implements ClinicService {
     public void saveVet(Vet vet) throws DataAccessException {
         vetRepository.save(vet);
     }
-    /*
-    @Override
-    @Transactional(readOnly = true)
-    public Set<Specialty> findAllSpecialties() throws DataAccessException {
-        return vetRepository.findAllSpecialties();
-    }
-    */
+ 
 }

@@ -16,15 +16,18 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Map;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.model.Vet;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Juergen Hoeller
@@ -43,12 +46,12 @@ public class VetController {
     public VetController(ClinicService clinicService) {
         this.clinicService = clinicService;
     }
-
+    /*
     @ModelAttribute("specialties")
-    public Set<Specialty> populatePetTypes() {
-        return this.clinicService.;
+    public Collection <Specialty> populateSpecialties(){
+        return this.clinicService.findVetSpecialties();
     }
-
+    */
     @RequestMapping(value = { "/vets.html"})
     public String showVetList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet objects

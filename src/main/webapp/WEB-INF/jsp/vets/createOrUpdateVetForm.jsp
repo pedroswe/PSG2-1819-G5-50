@@ -11,14 +11,16 @@
         <c:if test="${vet['new']}">New </c:if> Vet
     </h2>
     <form:form modelAttribute="vet" class="form-horizontal" id="add-vet-form">
-        <input type="hidden" name="id" value="${vet_specialties}" />
+        
         <div class="form-group has-feedback">
             <petclinic:inputField label="First Name" name="firstName"/>
             <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Specialties" name="specialties" />
-
             
+            <div class="control-group">
+                <petclinic:selectField name="specialties" label="Specialties " names="${vet.specialties}" size="5"/>
+            </div>
         </div>
+        
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
