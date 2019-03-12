@@ -19,10 +19,12 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Vets;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author Juergen Hoeller
@@ -33,12 +35,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class VetController {
 
+    private static final String VIEWS_VET_CREATE_OR_UPDATE_FORM = "vets/createOrUpdateVetForm";
     private final ClinicService clinicService;
-
+   
 
     @Autowired
     public VetController(ClinicService clinicService) {
         this.clinicService = clinicService;
+    }
+
+    @ModelAttribute("specialties")
+    public Set<Specialty> populatePetTypes() {
+        return this.clinicService.;
     }
 
     @RequestMapping(value = { "/vets.html"})
@@ -62,5 +70,11 @@ public class VetController {
         return vets;
     }
 
+    @RequestMapping(value = "/vets/new", method = RequestMethod.GET)
+    public String initCreationForm(Map<String, Object> model) {
+        Vet vet = new Vet();
+        model.put("vet", vet);
+        return VIEWS_VET_CREATE_OR_UPDATE_FORM;
+    }
 
 }
