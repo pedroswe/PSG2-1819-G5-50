@@ -52,7 +52,8 @@ public class PetHotelServiceImpl implements PetHotelService {
         petHotelRepository.save(petHotel);
     }
 
-	public void delete(Integer id) {
-		this.petHotelRepository.delete(id);
-	}
+    @Override
+    public void deleteById(Integer id) {
+
+    }
 }

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,8 +22,8 @@ public class PetHotel extends BaseEntity {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate endDate;
 
-    @Column(name = "pet")
     @OneToOne
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
 

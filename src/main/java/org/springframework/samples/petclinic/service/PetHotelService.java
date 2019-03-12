@@ -29,6 +29,6 @@ public interface PetHotelService {
 
     Collection<PetHotel> findAll();
     void save(PetHotel hotel);
-    void delete(Integer id);
+    void deleteById(Integer id);
     
 }
