@@ -28,6 +28,7 @@ import org.springframework.samples.petclinic.service.PetHotelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -78,6 +79,16 @@ public class PetHotelController {
 				return VIEWS_PET_HOTELS_LIST;
 			}
 		}
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("id") int id) {
+		try {
+			this.petHotelService.deleteById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return "redirect:/pethotel/list.html";
 	}
 
 	private void createViewModel(Map<String, Object> model) {

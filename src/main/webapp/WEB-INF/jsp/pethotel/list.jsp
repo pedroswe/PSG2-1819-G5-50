@@ -54,7 +54,7 @@
                         <c:out value="${room.endDate}"/>
                     </td>
                     <td>
-                        <a href="/pethotel/delete.html?id=${room.id}">🗑️</a>
+                        <a href="/pethotel/delete/${room.id}">BORRAR MUY FUERTE</a>
                     </td>
                 </tr>
             </c:forEach>

@@ -54,6 +54,6 @@ public class PetHotelServiceImpl implements PetHotelService {
 
     @Override
     public void deleteById(Integer id) {
-
+        this.petHotelRepository.deleteById(id);
     }
 }
