@@ -24,7 +24,7 @@
                 <button class="btn btn-default" type="submit">Save</button>
                  
                 <spring:url value="/vets/{vetId}/edit" var="vetUrl">
-                        <spring:param name="vetId" value="${vet.id}"/>
+                        <spring:param name="vetId" value="${vetId}"/>
                     </spring:url>
                     <a class="btn btn-default" href="${fn:escapeXml(vetUrl)}">Go back</a>
             </div>

@@ -141,17 +141,17 @@ public class VetController {
 
     // CREATE SPECIALTY (GET)
     @RequestMapping(value = "/vets/{vetId}/addSpecialty", method = RequestMethod.GET)
-    public String addSpecialtyForm(@PathVariable("vetId") int vetId, ModelMap model) {
+    public String addSpecialtyForm(@PathVariable("vetId") Integer vetId, ModelMap model) {
         Vet vet = this.clinicService.findVetById(vetId);
         Specialty specialty = new Specialty();
-        model.put("vetId", vetId);
+        model.put("vetId", vet.getId());
         model.put("specialty", specialty);
         return ADD_SPECIALTY;
     }
 
     // CREATE SPECIALTY TO SAVE (POST)
     @RequestMapping(value = "/vets/{vetId}/addSpecialty", method = RequestMethod.POST)
-    public String processAddSpecialtyForm(Specialty specialty, BindingResult result, int vetId, ModelMap model){
+    public String processAddSpecialtyForm(Specialty specialty, BindingResult result, Integer vetId, ModelMap model){
         if (result.hasErrors()) {
             model.put("vetId", vetId);
             model.put("specialty", specialty);
