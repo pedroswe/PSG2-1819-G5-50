@@ -54,4 +54,10 @@ public interface ClinicService {
     void saveVet(Vet vet) throws DataAccessException;
 
     Collection<Specialty> findSpecialtys() throws DataAccessException;
+
+    Vet findVetById(int id) throws DataAccessException;
+
+    void saveSpecialty(Specialty specialty) throws DataAccessException;
+
+    Specialty findSpecialtyByName(String name) throws DataAccessException;
 }

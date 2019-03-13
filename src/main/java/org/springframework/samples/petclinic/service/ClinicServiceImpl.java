@@ -29,6 +29,7 @@ import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.repository.SpecialtyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,13 +46,15 @@ public class ClinicServiceImpl implements ClinicService {
     private VetRepository vetRepository;
     private OwnerRepository ownerRepository;
     private VisitRepository visitRepository;
+    private SpecialtyRepository specialtyRepository;
 
     @Autowired
-    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository) {
+    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, SpecialtyRepository specialtyRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
+        this.specialtyRepository = specialtyRepository;
     }
     
     @Override
@@ -123,7 +126,24 @@ public class ClinicServiceImpl implements ClinicService {
     @Override
     @Transactional(readOnly = true)
     public Collection<Specialty> findSpecialtys() throws DataAccessException {
-        return vetRepository.findSpecialtys();
+        return specialtyRepository.findAll();
     }
  
+    @Override
+    @Transactional(readOnly = true)
+    public Vet findVetById(int id) throws DataAccessException {
+        return vetRepository.findById(id);
+    }
+    
+    @Override
+    @Transactional
+    public void saveSpecialty(Specialty specialty) throws DataAccessException{
+        specialtyRepository.save(specialty);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Specialty findSpecialtyByName(String name) throws DataAccessException{
+        return specialtyRepository.findByName(name);
+    }
 }

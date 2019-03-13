@@ -11,14 +11,21 @@
         <c:if test="${vet['new']}">New </c:if> Vet
     </h2>
     <form:form modelAttribute="vet" class="form-horizontal" id="add-vet-form">
-        
+        <input type="hidden" name="id" value="${vet.id}"/>
         <div class="form-group has-feedback">
             <petclinic:inputField label="First Name" name="firstName"/>
             <petclinic:inputField label="Last Name" name="lastName"/>
+
+            <c:choose>
+                    <c:when test="${vet['new']}">
+                            <input type="hidden" name="specialties" value="${vet.specialties}"/>
+                    </c:when>
+                    <c:otherwise>
+                        <petclinic:inputField label="Specialties" name="specialties"/>
+                        
+                    </c:otherwise>
+                </c:choose>
             
-            <div class="control-group">
-                <petclinic:selectField name="specialties" label="Specialties " names="${_specialties}" size="5"/>
-            </div>
         </div>
         
         <div class="form-group">
@@ -29,8 +36,14 @@
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-default" type="submit">Update Vet</button>
+                        
                     </c:otherwise>
                 </c:choose>
+                <spring:url value="/vets/{vetId}/addSpecialty" var="vetUrl">
+                        <spring:param name="vetId" value="${vet.id}"/>
+                    </spring:url>
+                    <a class="btn btn-default" href="${fn:escapeXml(vetUrl)}">Add Specialty</a>
+                <a class="btn btn-default" href='<spring:url value="/vets/list" htmlEscape="true"/>'>Go back</a>
             </div>
         </div>
     </form:form>

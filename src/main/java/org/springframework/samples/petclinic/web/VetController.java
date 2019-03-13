@@ -16,17 +16,24 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Map;
+
+import javax.validation.Valid;
+
 import java.util.Collection;
 
+import org.springframework.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -39,6 +46,7 @@ import org.springframework.web.bind.annotation.*;
 public class VetController {
 
     private static final String VIEWS_VET_CREATE_OR_UPDATE_FORM = "vets/createOrUpdateVetForm";
+    private static final String ADD_SPECIALTY = "vets/addSpecialty";
     private final ClinicService clinicService;
    
 
@@ -50,15 +58,19 @@ public class VetController {
     @ModelAttribute("_specialities")
 	public Collection<Specialty> populateSpecialtys() {
 		return this.clinicService.findSpecialtys();
-	}
-  /*
+    }
+  
     @InitBinder("vet")
 	public void initVetBinder(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
     }
-    */
-
-    @RequestMapping(value = { "/vets.html"})
+/*
+    @InitBinder("specialty")
+	public void initSpecialtyBinder(WebDataBinder dataBinder) {
+		dataBinder.setValidator(new SpecialtyValidator());
+	}
+*/
+    @RequestMapping(value = { "/vets.html", "/vets/list"})
     public String showVetList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet objects
         // so it is simpler for Object-Xml mapping
@@ -80,31 +92,84 @@ public class VetController {
     }
 
 
-    // CREATE
+    // CREATE (GET)
     @RequestMapping(value = "/vets/new", method = RequestMethod.GET)
     public String initCreationForm(Map<String, Object> model) {
         // Second option is to send all Specialties inside this controller
         Collection<Specialty> _specialties = this.clinicService.findSpecialtys();
         Vet vet = new Vet();
         model.put("vet", vet);
-        model.put("_specialties", _specialties);
         return VIEWS_VET_CREATE_OR_UPDATE_FORM;
     }
-    /*
-    // CREATE TO SAVE
+    
+    // CREATE TO SAVE (POST)
     @RequestMapping(value = "/vets/new", method = RequestMethod.POST)
-	public String processCreationForm(Vet vet, BindingResult result, ModelMap model) {
-		if (StringUtils.hasLength(vet.getFirstName()) && StringUtils.hasLength(vet.getLastName()) && vet.isNew() ) {
+	public String processCreationForm(@Valid Vet vet, BindingResult result, ModelMap model) {
+		if (StringUtils.hasLength(vet.getFirstName()) && StringUtils.hasLength(vet.getLastName()) && vet.isNew() && vet.getFirstName().equals(vet.getLastName())) {
 			result.rejectValue("firstName", "duplicate", "already exists");
 		}
 		if (result.hasErrors()) {
-			model.put("vet", vet);
+            model.put("vet", vet);
+            //model.put("_specialties", vet.getSpecialties());
 			return VIEWS_VET_CREATE_OR_UPDATE_FORM;
 		} else {
-			Vet res = (Vet) vet;
-			this.clinicService.saveVet(res);
-			return "redirect:/vets/vetList";//modificado
+            Vet res = (Vet) vet;
+            this.clinicService.saveVet(res);
+			return "redirect:/vets/list";//modificado
 		}
 	}
-    */
+    
+    // EDIT (GET) = UPDATE
+    @RequestMapping(value = "/vets/{vetId}/edit", method = RequestMethod.GET)
+	public String initUpdateForm(@PathVariable("vetId") int vetId, ModelMap model) {
+		Vet vet = this.clinicService.findVetById(vetId);
+        model.put("vet", vet);
+        model.put("specialties", vet.getSpecialties());
+		return VIEWS_VET_CREATE_OR_UPDATE_FORM;
+	}
+    // EDIT (POST) = UPDATE
+	@RequestMapping(value = "/vets/{vetId}/edit", method = RequestMethod.POST)
+	public String processUpdateForm(Vet vet, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+            model.put("vet", vet);
+			return VIEWS_VET_CREATE_OR_UPDATE_FORM;
+		} else {
+            this.clinicService.saveVet(vet);
+			return "redirect:/vets/list";
+		}
+	}
+
+    // CREATE SPECIALTY (GET)
+    @RequestMapping(value = "/vets/{vetId}/addSpecialty", method = RequestMethod.GET)
+    public String addSpecialtyForm(@PathVariable("vetId") int vetId, ModelMap model) {
+        Vet vet = this.clinicService.findVetById(vetId);
+        Specialty specialty = new Specialty();
+        model.put("vetId", vetId);
+        model.put("specialty", specialty);
+        return ADD_SPECIALTY;
+    }
+
+    // CREATE SPECIALTY TO SAVE (POST)
+    @RequestMapping(value = "/vets/{vetId}/addSpecialty", method = RequestMethod.POST)
+    public String processAddSpecialtyForm(Specialty specialty, BindingResult result, int vetId, ModelMap model){
+        if (result.hasErrors()) {
+            model.put("vetId", vetId);
+            model.put("specialty", specialty);
+			return ADD_SPECIALTY;
+		} else {
+            if (this.clinicService.findSpecialtyByName(specialty.getName()) == null ){
+                this.clinicService.saveSpecialty(specialty);
+                
+            }else{
+                
+            }
+                Specialty res = this.clinicService.findSpecialtyByName(specialty.getName());
+                System.out.println("--------------" + res.getName());
+                Vet vet = this.clinicService.findVetById(vetId);
+                vet.addSpecialty(res);
+                this.clinicService.saveVet(vet);
+			return "redirect:/vets/list";
+		}
+    }
+
 }

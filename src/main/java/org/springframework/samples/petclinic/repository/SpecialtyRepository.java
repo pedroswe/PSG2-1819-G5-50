@@ -20,10 +20,10 @@ import java.util.Collection;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.model.Specialty;
-import org.springframework.samples.petclinic.model.Vet;
+
 
 /**
- * Repository class for <code>Vet</code> domain objects All method names are compliant with Spring Data naming
+ * Repository class for <code>Pet</code> domain objects All method names are compliant with Spring Data naming
  * conventions so this interface can easily be extended for Spring Data See here: http://static.springsource.org/spring-data/jpa/docs/current/reference/html/jpa.repositories.html#jpa.query-methods.query-creation
  *
  * @author Ken Krebs
@@ -31,34 +31,34 @@ import org.springframework.samples.petclinic.model.Vet;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface VetRepository {
+public interface SpecialtyRepository {
 
     /**
-     * Retrieve all <code>Vet</code>s from the data store.
+     * Retrieve all <code>Specialties</code> from the data store.
      *
-     * @return a <code>Collection</code> of <code>Vet</code>s
+     * @return a <code>Collection</code> of <code>Specialties</code>
      */
-    Collection<Vet> findAll() throws DataAccessException;
+    Collection<Specialty> findAll() throws DataAccessException;
 
     /**
-     * Save an <code>Vet</code> to the data store, either inserting or updating
-     * it.
-     *
-     * @param vet the <code>Vet</code> to save
-     * @see BaseEntity#isNew
-     */
-    void save(Vet vet) throws DataAccessException;
-    
-    
-
-    /**
-     * Retrieve a <code>Vet</code> from the data store by id.
+     * Retrieve a <code>Specialty</code> from the data store by id.
      *
      * @param id the id to search for
-     * @return the <code>Vet</code> if found
+     * @return the <code>Specialty</code> if found
      * @throws org.springframework.dao.DataRetrievalFailureException if not found
      */
-    Vet findById(int id) throws DataAccessException;
+    Specialty findById(int id) throws DataAccessException;
 
+    /**
+     * Save a <code>Specialty</code> to the data store, either inserting or updating
+     * it.
+     *
+     * @param specialty the <code>Specialty</code> to save
+     * @see BaseEntity#isNew
+     */
+    void save(Specialty specialty) throws DataAccessException;
     
+    void deleteById(Integer id);
+
+    Specialty findByName (String name) throws DataAccessException;
 }
