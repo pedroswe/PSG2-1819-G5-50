@@ -16,6 +16,7 @@
     </jsp:attribute>
 
     <jsp:body>
+        
     <h2>Pet Hotel</h2>
     <form:form modelAttribute="petHotel" class="form-inline">
         <petclinic:selectField name="pet" label="Pet " names="${pets}" size="5"/>
@@ -54,7 +55,7 @@
                         <c:out value="${room.endDate}"/>
                     </td>
                     <td>
-                        <a href="/pethotel/delete/${room.id}">BORRAR MUY FUERTE</a>
+                        <a href="/pethotel/delete/${room.id}"><img src="/resources/images/papelera.png" alt="delete"></a>
                     </td>
                 </tr>
             </c:forEach>
