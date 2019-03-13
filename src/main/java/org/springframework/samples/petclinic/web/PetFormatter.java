@@ -22,7 +22,6 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.service.ClinicService;
 
 /**
@@ -49,14 +48,15 @@ public class PetFormatter implements Formatter<Pet> {
 
     @Override
     public String print(Pet pet, Locale locale) {
-        return pet.getName();
+        return pet.getName() + " (" + pet.getOwner().getFirstName() + " " + pet.getOwner().getLastName() + ")";
     }
 
     @Override
     public Pet parse(String text, Locale locale) throws ParseException {
         Collection<Pet> pets = this.clinicService.findAllPets();
         for (Pet pet : pets) {
-            if (pet.getName().equals(text)) {
+            String check = pet.getName() + " (" + pet.getOwner().getFirstName() + " " + pet.getOwner().getLastName() + ")";
+            if (check.equals(text)) {
                 return pet;
             }
         }

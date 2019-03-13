@@ -35,6 +35,7 @@
             <th>Pet</th>
             <th>Init Date</th>
             <th>End Date</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -51,6 +52,9 @@
                     </td>
                     <td>
                         <c:out value="${room.endDate}"/>
+                    </td>
+                    <td>
+                        <a href="/pethotel/delete.html?id=${room.id}">🗑️</a>
                     </td>
                 </tr>
             </c:forEach>
