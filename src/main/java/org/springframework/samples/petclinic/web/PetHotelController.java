@@ -18,11 +18,16 @@ package org.springframework.samples.petclinic.web;
 import java.util.Collection;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetHotel;
+import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.samples.petclinic.service.PetHotelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,18 +46,45 @@ public class PetHotelController {
     private static final String VIEWS_PET_HOTELS_LIST = "petHotel/list"; 
        
     private PetHotelService petHotelService;
+	private ClinicService clinicService;
 
 	@Autowired
-	public PetHotelController(PetHotelService petHotelService) {
+	public PetHotelController(PetHotelService petHotelService, ClinicService clinicService) {
 		this.petHotelService = petHotelService;
+		this.clinicService = clinicService;
 	}
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Map<String, Object> model) {
-		Collection<PetHotel> petHotels = petHotelService.findAll();
-		model.put("petHotels", petHotels);
+		createViewModel(model);
+		model.put("petHotel", new PetHotel());
 		return VIEWS_PET_HOTELS_LIST;
 	}
 
+
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public String processUpdateForm(PetHotel petHotel, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			createViewModel(model);
+			model.put("petHotel", petHotel);
+			return VIEWS_PET_HOTELS_LIST;
+		} else {
+			try {
+				this.petHotelService.save(petHotel);
+				return "redirect:/pethotel/list.html";
+			} catch (Exception e) {
+				createViewModel(model);
+				model.put("petHotel", petHotel);
+				return VIEWS_PET_HOTELS_LIST;
+			}
+		}
+	}
+
+	private void createViewModel(Map<String, Object> model) {
+		Collection<PetHotel> petHotels = petHotelService.findAll();
+		Collection<Pet> pets = clinicService.findAllPets();
+		model.put("petHotels", petHotels);
+		model.put("pets", pets);
+	}
 
 }
