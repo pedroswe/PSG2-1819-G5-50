@@ -20,6 +20,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import java.util.Collection;
+import java.util.ArrayList;
 
 import org.springframework.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +97,7 @@ public class VetController {
     @RequestMapping(value = "/vets/new", method = RequestMethod.GET)
     public String initCreationForm(Map<String, Object> model) {
         // Second option is to send all Specialties inside this controller
-        Collection<Specialty> _specialties = this.clinicService.findSpecialtys();
+        //Collection<Specialty> _specialties = this.clinicService.findSpecialtys();
         Vet vet = new Vet();
         model.put("vet", vet);
         return VIEWS_VET_CREATE_OR_UPDATE_FORM;
@@ -129,12 +130,23 @@ public class VetController {
 	}
     // EDIT (POST) = UPDATE
 	@RequestMapping(value = "/vets/{vetId}/edit", method = RequestMethod.POST)
-	public String processUpdateForm(Vet vet, BindingResult result, ModelMap model) {
+	public String processUpdateForm(@PathVariable("vetId") int vetId, Vet vet, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
             model.put("vet", vet);
 			return VIEWS_VET_CREATE_OR_UPDATE_FORM;
 		} else {
-            this.clinicService.saveVet(vet);
+            Vet res = new Vet();
+            if (vetId != 0){
+                //actualiza: hace falta coger vetId porque vet.getId() no sirve
+                res = this.clinicService.findVetById(vetId);
+                res.setFirstName(vet.getFirstName());
+                res.setLastName(vet.getLastName());
+            }else{
+                res.setFirstName(vet.getFirstName());
+                res.setLastName(vet.getLastName());
+                res.getSpecialties().addAll(new ArrayList<Specialty>());
+            }
+            this.clinicService.saveVet(res);
 			return "redirect:/vets/list";
 		}
 	}
@@ -164,7 +176,6 @@ public class VetController {
                 
             }
                 Specialty res = this.clinicService.findSpecialtyByName(specialty.getName());
-                System.out.println("--------------" + res.getName());
                 Vet vet = this.clinicService.findVetById(vetId);
                 vet.addSpecialty(res);
                 this.clinicService.saveVet(vet);
