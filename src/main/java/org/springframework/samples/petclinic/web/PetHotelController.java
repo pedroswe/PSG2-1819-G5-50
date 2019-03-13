@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/pethotel")
 public class PetHotelController {
 
-    private static final String VIEWS_PET_HOTELS_LIST = "pethotel/list"; 
+    private static final String VIEWS_PET_HOTELS_LIST = "petHotel/list"; 
        
     private PetHotelService petHotelService;
 
@@ -49,8 +49,8 @@ public class PetHotelController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Map<String, Object> model) {
-		// Collection<PetHotel> petHotels = petHotelService.findAll();
-		// model.put("petHotels", petHotels);
+		Collection<PetHotel> petHotels = petHotelService.findAll();
+		model.put("petHotels", petHotels);
 		return VIEWS_PET_HOTELS_LIST;
 	}
 
