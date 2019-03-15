@@ -44,7 +44,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/pethotel")
 public class PetHotelController {
 
-    private static final String VIEWS_PET_HOTELS_LIST = "petHotel/list"; 
+    private static final String VIEWS_PET_HOTELS_LIST = "hotel/list"; 
        
     private PetHotelService petHotelService;
 	private ClinicService clinicService;
