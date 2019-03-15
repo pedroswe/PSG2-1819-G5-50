@@ -114,4 +114,7 @@ public class ClinicServiceImpl implements ClinicService {
 		this.petRepository.deleteById(id);
 	}
 
+    public Collection<Pet> findAllPets(){
+        return this.petRepository.findAll();
+    }
 }

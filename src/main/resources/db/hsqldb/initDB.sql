@@ -5,6 +5,7 @@ DROP TABLE visits IF EXISTS;
 DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE owners IF EXISTS;
+DROP TABLE hotel IF EXISTS;
 
 
 CREATE TABLE vets (
@@ -62,3 +63,13 @@ CREATE TABLE visits (
 );
 ALTER TABLE visits ADD CONSTRAINT fk_visits_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
 CREATE INDEX visits_pet_id ON visits (pet_id);
+
+
+CREATE TABLE hotel (
+  id          INTEGER IDENTITY PRIMARY KEY,
+  init_date  DATE NOT NULL,
+  end_date  DATE NOT NULL,
+  pet_id      INTEGER NOT NULL
+);
+ALTER TABLE hotel ADD CONSTRAINT fk_hotel_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
+CREATE INDEX hotel_pet_id ON hotel (pet_id);
