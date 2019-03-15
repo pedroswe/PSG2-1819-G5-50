@@ -143,6 +143,7 @@ public class ClinicServiceImpl implements ClinicService {
 
     public Collection<Pet> findAllPets(){
         return this.petRepository.findAll();
+    }
     @Override
     @Transactional(readOnly = true)
     public Specialty findSpecialtyByName(String name) throws DataAccessException{
