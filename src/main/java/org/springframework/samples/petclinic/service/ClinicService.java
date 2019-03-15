@@ -16,14 +16,13 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
-
+import org.springframework.samples.petclinic.model.Specialty;
 
 /**
  * Mostly used as a facade so all controllers have a single point of entry
@@ -53,4 +52,13 @@ public interface ClinicService {
     void deleteById(Integer id);
     
     Collection<Pet> findAllPets();
+    void saveVet(Vet vet) throws DataAccessException;
+
+    Collection<Specialty> findSpecialtys() throws DataAccessException;
+
+    Vet findVetById(int id) throws DataAccessException;
+
+    void saveSpecialty(Specialty specialty) throws DataAccessException;
+
+    Specialty findSpecialtyByName(String name) throws DataAccessException;
 }

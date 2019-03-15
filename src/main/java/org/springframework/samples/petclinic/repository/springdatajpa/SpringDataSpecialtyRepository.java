@@ -15,19 +15,22 @@
  */
 package org.springframework.samples.petclinic.repository.springdatajpa;
 
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
-import org.springframework.samples.petclinic.model.Vet;
-import org.springframework.samples.petclinic.repository.VetRepository;
+import org.springframework.samples.petclinic.model.Specialty;
+import org.springframework.samples.petclinic.repository.SpecialtyRepository;
 
 /**
- * Spring Data JPA specialization of the {@link VetRepository} interface
+ * Spring Data JPA specialization of the {@link SpecialtyRepository} interface
  *
  * @author Michael Isvy
  * @since 15.1.2013
  */
-public interface SpringDataVetRepository extends VetRepository, Repository<Vet, Integer> {
-/*
+public interface SpringDataSpecialtyRepository extends SpecialtyRepository, Repository<Specialty, Integer> {
+
     @Override
-    @Query("SELECT s FROM Specialty s")
-    Collection<Specialty> findSpecialtys() throws DataAccessException;*/
+    @Query("SELECT s FROM Specialty s WHERE s.name = ?1")
+    Specialty findByName(String name) throws DataAccessException;
 }
