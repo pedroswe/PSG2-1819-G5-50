@@ -49,6 +49,7 @@ public interface VetRepository {
     void save(Vet vet) throws DataAccessException;
     
     
+    void deleteById(Integer id);
 
     /**
      * Retrieve a <code>Vet</code> from the data store by id.

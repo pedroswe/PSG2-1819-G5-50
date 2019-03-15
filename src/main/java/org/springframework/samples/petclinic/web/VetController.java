@@ -31,7 +31,9 @@ import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.WebDataBinder;
@@ -92,6 +94,11 @@ public class VetController {
         return vets;
     }
 
+    @RequestMapping(value = "/vets/{vetId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("vetId") Integer vetId) {
+    	this.clinicService.deleteByIdVet(vetId);
+    	return "redirect:/vets/list";
+    }
 
     // CREATE (GET)
     @RequestMapping(value = "/vets/new", method = RequestMethod.GET)
