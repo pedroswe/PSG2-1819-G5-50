@@ -30,10 +30,9 @@ Grupo de Prácticas: G5-50
 
 | Índice |
 |--------|
-| [1. Introducción]() |
-| [2. Objetivo]() |
-| [3. Contenido]() |
-| [3.1. Sección 1]() |
+| [1. Introducción](#1-introduccion) |
+| [2. Objetivo](#2-objetivo) |
+| [3. Contenido](#3-contenido) |
 
 ## 1. Introducción
 En este documento vamos a recoger el proceso de desarrollo de las primeras tareas relativas al L2 - Configuration Management.
@@ -59,11 +58,11 @@ Las issues de este entregable pueden consultarse [aquí](https://github.com/gii-
 
 Se repartieron de manera equitativa y según el grado de dificultad, teniendo en cuenta la necesidad de conocimientos sobre Spring para su realización.
 
-En la siguiente captura vemos cómo se inicializó el repositorio por comandos.
+En la siguiente captura vemos el resultado que aparece en github.com tras la inicialización del repositorio.
 
 ![init repo](../images/L2-8-image-git_repo_init.PNG)
 
-Para redirigir el repositorio local, hacia el repositorio remoto, se ejecutaron los comandos de la siguiente captura.
+Para redirigir el repositorio local, hacia el repositorio remoto, se ejecutaron los comandos que se muestran en la siguiente captura.
 
 ![init repo](../images/L2-8-image-git_remote_and_push.PNG)
 
@@ -71,7 +70,7 @@ En la siguiente captura, de manera muy gráfica vemos el resultado de la finaliz
 
 ![init repo](../images/L2-8-image-tareas_finish.PNG)
 
-A modo de resumen, comprobamos que el reparto de tareas sin archivos en común y realizadas de manera secuencial sobre la rama principal ***master***, ha propiciado la inexistencia de conflictos, ya que todos los miemrbos del equipo hacíamos **pull** y no tocábamos archivos en común.
+A modo de resumen, comprobamos que el reparto de tareas sin archivos en común y realizadas de manera secuencial sobre la rama principal ***master***, ha propiciado la inexistencia de conflictos, ya que todos los miembros del equipo hacíamos **pull** y no tocábamos archivos en común.
 
 
 
