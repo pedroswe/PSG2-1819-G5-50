@@ -33,8 +33,8 @@ Grupo de Prácticas: G5-50
 | [1. Introducción](#1-introduccion) |
 | [2. Objetivo](#2-objetivo) |
 | [3. Contenido](#3-contenido) |
-| [3.1. Estructura del repositorio y estrategia de ramas](##31-estructura-del-repositorio-y-estrategia-de-ramas) |
-| [3.2. Política de versionado](##32-politica-de-versionado) |
+| [3.1. Estructura del repositorio y estrategia de ramas](#31-estructura-del-repositorio-y-estrategia-de-ramas) |
+| [3.2. Política de versionado](#32-politica-de-versionado) |
 
 ## 1. Introducción
 En este documento vamos a recoger la metodología de gestión de la configuración trabajada en L2 - Configuration Management.
@@ -57,6 +57,8 @@ Las issues de este entregable pueden consultarse [aquí](https://github.com/gii-
 La gestión de la configuración es clave dentro del desarrollo de un proceso que conlleve la generación de nuevos artefactos, entendiendo por artefacto, entidades que se generan, aportan valor o necesitan consultarse dentro de la organización. 
 
 Por ese motivo, el código implementado, los documentos para los desarrolladores, los manuales de usuario, constituyen ejemplos de artefactos y el gestor de la configuración del equipo debe desarrollar unas directrices que permitan su correcta gestión.
+
+Adicionalmente, recomendamos que se visite la wiki para ver la parte concerniente a la [política de nombrado de artefactos](https://github.com/gii-is-psg2/PSG2-1819-G5-50/wiki/Configuration-Management-System#naming-policy-for-artefacts).
 
 El sistema de gestión de la configuración se ha descrito ampliamente en nuestra [wiki](https://github.com/gii-is-psg2/PSG2-1819-G5-50/wiki/Configuration-Management-System).
 
@@ -81,6 +83,11 @@ La configuración de nuestro repositorio basada en la estrategia de Git Flow res
 
 ![git flow in a nutshell](https://wac-cdn.atlassian.com/dam/jcr:61ccc620-5249-4338-be66-94d563f2843c/05%20(2).svg?cdnVersion=ld)
 
+Adicionalmente, recomendamos visitar la wiki para ver la [política para los mensajes de commit de git](https://github.com/gii-is-psg2/PSG2-1819-G5-50/wiki/Configuration-Management-System#message-policy-for-git-commits).
+
+
+## 3.2. Política de versionado
+
 Para la gestión del versionado de ramas, como hemos descrito en nuestra [wiki](https://github.com/gii-is-psg2/PSG2-1819-G5-50/wiki/Configuration-Management-System#labels-for-semantic-versioning), nos hemos basado en las especificaciones de [Tom Preston-Werner](https://github.com/mojombo/).
 
 Consideramos el siguiente algoritmo para asignar una etiqueta a un proyecto:
@@ -88,8 +95,17 @@ Consideramos el siguiente algoritmo para asignar una etiqueta a un proyecto:
 - Si no existe una etiqueta previa, asignaremos la primera etiqueta conforme a la **convención**.
 
 La convención es la siguiente
+Para un número de versión que siga este patrón `MAJOR`.`MINOR`.`PATCH`, se incrementa:
+
+`MAJOR` cuando se hagan cambios incompatibles con la API,
+
+`MINOR` cuando se añade una funcionalidad incompatible con la versión anterior, y
+
+`PATCH` cuando se hacen arreglos que no suponen pérdida ni modificaciones severas de la funcionalidad.
+
+Se pueden agregar etiquetas adicionales para pre-releases y versiones definitivas que extiendan el patrón `MAJOR`.`MINOR`.`PATCH`
 
 
-
+Adicionalmente, recomendamos que se visite la wiki para ver la parte concerniente a la [petición de cambios](https://github.com/gii-is-psg2/PSG2-1819-G5-50/wiki/Configuration-Management-System#change-management).
 
 
