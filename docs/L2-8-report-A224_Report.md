@@ -4,7 +4,7 @@
 &nbsp;
 # L2 - Configuration Management
 
-![logo us](./images/L2-8-image-logo_us_300.gif)
+![logo us](../images/L2-8-image-logo_us_300.gif)
 
 ## Grado en Ingeniería Informática - Ingeniería del Software
 
@@ -35,10 +35,6 @@ Grupo de Prácticas: G5-50
 | [3. Contenido]() |
 | [3.1. Sección 1]() |
 
-As a group, create a technical report (in Spanish) that describes the history of the project after finishing with the previous tasks.
-
-This document should include a diagram showing the timeline of the project, identifying the conflicts that arose, if any, and describing how the group solved those conflicts.
-
 ## 1. Introducción
 En este documento vamos a recoger el proceso de desarrollo de las primeras tareas relativas al L2 - Configuration Management.
 
@@ -64,7 +60,9 @@ Las issues de este entregable pueden consultarse [aquí](https://github.com/gii-
 Se repartieron de manera equitativa y según el grado de dificultad, teniendo en cuenta la necesidad de conocimientos sobre Spring para su realización.
 
 ### 3.1. Clonar el repo e inicializarlo
+En la siguiente captura vemos cómo se inicializó el repositorio por comandos.
 
+![init repo](../images/L2-12-image-git_flow_init.PNG)
 
 
 
