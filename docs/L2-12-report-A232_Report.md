@@ -34,7 +34,7 @@ Grupo de Prácticas: G5-50
 | [2. Objetivo](#2-objetivo) |
 | [3. Contenido](#3-contenido) |
 | [3.1. Estructura del repositorio y estrategia de ramas](#31-estructura-del-repositorio-y-estrategia-de-ramas) |
-| [3.2. Política de versionado](#32-politica-de-versionado) |
+| [3.2. Política de versionado](#32-política-de-versionado) |
 
 ## 1. Introducción
 En este documento vamos a recoger la metodología de gestión de la configuración trabajada en L2 - Configuration Management.
