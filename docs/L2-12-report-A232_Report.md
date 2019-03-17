@@ -64,7 +64,7 @@ El sistema de gestión de la configuración se ha descrito ampliamente en nuestr
 
 ## 3.1. Estructura del repositorio y estrategia de ramas
 
-En nuestro caso hemos agrupado las issues A2.3.2.a y A2.3.2.b dentro de una misma entrada, ya que para el Sprint 2 se recomendaba pasar a una estrategia basada en Git Flow. Esta estrategia permite la incorporación de funcionalidades sobre una rama común (**develop**) evitando los commits directos sobre dicha rama. 
+En nuestro caso hemos agrupado las issues A2.3.2.a y A2.3.2.b dentro de una misma entrada, ya que en la segunda parte del sprint se recomendaba pasar a una estrategia basada en Git Flow. Esta estrategia permite la incorporación de funcionalidades sobre una rama común (**develop**) evitando los commits directos sobre dicha rama. 
 Seguimos las recomendaciones de configuración descritas en este [magnífico tutorial](https://danielkummer.github.io/git-flow-cheatsheet/), inicializando el repositorio con la siguiente configuración de ramas:
 
 ![Git Flow Repo Init](../images/L2-12-image-git_flow_init.PNG)
@@ -75,7 +75,7 @@ Tras dicha configuración, es necesario realizar ***push*** para que el resto de
 
 De esta manera, todas las funcionalidades emanan de **develop** y tras su desarrollo, se realiza un ***merge*** sobre **develop**.
 
-Esta manera de gestionar el código ha sido muy beneficiosa con respecto a la estrategia del Sprint 1, donde todos "íbamos" a **master** y para evitar conflictos era necesario realizar las tareas de manera secuencial.
+Esta manera de gestionar el código ha sido muy beneficiosa con respecto a la estrategia de la primera parte del sprint, donde todos "íbamos" a **master** y para evitar conflictos era necesario realizar las tareas de manera secuencial.
 
 Git Flow supone una mejora de la independencia temporal para la realización de las tareas y mejora la integración del código. Obviamente, existen y han existido conflictos al hacer ***merge*** de las funcionalidades, pero su resolución resulta sencilla.
 

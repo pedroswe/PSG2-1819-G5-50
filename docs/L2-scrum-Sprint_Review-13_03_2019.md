@@ -29,7 +29,7 @@ Grupo de Prácticas: G5-50
 &nbsp;
 
 ## Resumen:
-Le mostramos al [Product Owner](https://github.com/japarejo) el estado actual de nuestro proyecto y a lo largo de los sprints. 
+Le mostramos al [Product Owner](https://github.com/japarejo) el estado actual de nuestro proyecto y a lo largo del sprint. 
 
 ## Aclaraciones y valoraciones: 
 
