@@ -31,7 +31,7 @@ Grupo de Prácticas: G5-50
 ## Resumen:
 Le mostramos al [Product Owner](https://github.com/japarejo) el estado actual de nuestro proyecto y a lo largo de los sprints. 
 
-# Aclaraciones y valoraciones: 
+## Aclaraciones y valoraciones: 
 
 1. No enfocar nuestro esfuerzo en la implementación de código sino preocuparnos más por el tratamiento que tengamos como equipo a la hora de trabajar con las ramas usando la metodología de Git Flow.
 
