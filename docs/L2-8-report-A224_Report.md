@@ -59,10 +59,19 @@ Las issues de este entregable pueden consultarse [aquí](https://github.com/gii-
 
 Se repartieron de manera equitativa y según el grado de dificultad, teniendo en cuenta la necesidad de conocimientos sobre Spring para su realización.
 
-### 3.1. Clonar el repo e inicializarlo
 En la siguiente captura vemos cómo se inicializó el repositorio por comandos.
 
-![init repo](../images/L2-12-image-git_flow_init.PNG)
+![init repo](../images/L2-12-image-git_repo_init.PNG)
+
+Para redirigir el repositorio local, hacia el repositorio remoto, se ejecutaron los comandos de la siguiente captura.
+
+![init repo](../images/L2-12-image-git_remote_and_push.PNG)
+
+En la siguiente captura, de manera muy gráfica vemos el resultado de la finalización de tareas obtenido mediante comandos.
+
+![init repo](../images/L2-12-image-tareas_finish.PNG)
+
+A modo de resumen, comprobamos que el reparto de tareas sin archivos en común y realizadas de manera secuencial sobre la rama principal ***master***, ha propiciado la inexistencia de conflictos, ya que todos los miemrbos del equipo hacíamos **pull** y no tocábamos archivos en común.
 
 
 
