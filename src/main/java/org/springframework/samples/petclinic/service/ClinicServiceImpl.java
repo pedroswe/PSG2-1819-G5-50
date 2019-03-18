@@ -16,19 +16,20 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.repository.SpecialtyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,15 +46,17 @@ public class ClinicServiceImpl implements ClinicService {
     private VetRepository vetRepository;
     private OwnerRepository ownerRepository;
     private VisitRepository visitRepository;
+    private SpecialtyRepository specialtyRepository;
 
     @Autowired
-    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository) {
+    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, SpecialtyRepository specialtyRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
+        this.specialtyRepository = specialtyRepository;
     }
-
+    
     @Override
     @Transactional(readOnly = true)
     public Collection<PetType> findPetTypes() throws DataAccessException {
@@ -100,7 +103,6 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable(value = "vets")
     public Collection<Vet> findVets() throws DataAccessException {
         return vetRepository.findAll();
     }
@@ -110,8 +112,46 @@ public class ClinicServiceImpl implements ClinicService {
 		return visitRepository.findByPetId(petId);
 	}
 
-	public void deleteById(Integer id) {
+	public void deleteByIdPet(Integer id) {
 		this.petRepository.deleteById(id);
 	}
+	public void deleteByIdVet(Integer id) {
+		this.vetRepository.deleteById(id);
+	}
+	public void deleteOwnerById(Integer id) {
+		this.ownerRepository.deleteById(id);
+	}
+    
+    @Override
+    @Transactional
+    public void saveVet(Vet vet) throws DataAccessException {
+        vetRepository.save(vet);
+    }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Specialty> findSpecialtys() throws DataAccessException {
+        return specialtyRepository.findAll();
+    }
+ 
+    @Override
+    @Transactional(readOnly = true)
+    public Vet findVetById(int id) throws DataAccessException {
+        return vetRepository.findById(id);
+    }
+    
+    @Override
+    @Transactional
+    public void saveSpecialty(Specialty specialty) throws DataAccessException{
+        specialtyRepository.save(specialty);
+    }
+
+    public Collection<Pet> findAllPets(){
+        return this.petRepository.findAll();
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public Specialty findSpecialtyByName(String name) throws DataAccessException{
+        return specialtyRepository.findByName(name);
+    }
 }

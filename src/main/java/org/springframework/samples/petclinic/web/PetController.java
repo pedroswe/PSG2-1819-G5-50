@@ -114,7 +114,7 @@ public class PetController {
 	public String delete(@PathVariable("petId") int petId) {
 		Pet pet = this.clinicService.findPetById(petId);
 		if(pet != null) {
-			this.clinicService.deleteById(petId);
+			this.clinicService.deleteByIdPet(petId);
 		} else {
 			return "redirect:/owners/{ownerId}";
 		}
