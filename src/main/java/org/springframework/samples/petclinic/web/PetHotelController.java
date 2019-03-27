@@ -18,8 +18,6 @@ package org.springframework.samples.petclinic.web;
 import java.util.Collection;
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetHotel;
@@ -37,16 +35,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author Michael Isvy
  *         <p/>
- *         Also see how the bean of type 'SimpleMappingExceptionResolver' has been declared inside
- *         /WEB-INF/mvc-core-config.xml
+ *         Also see how the bean of type 'SimpleMappingExceptionResolver' has
+ *         been declared inside /WEB-INF/mvc-core-config.xml
  */
 @Controller
 @RequestMapping("/pethotel")
 public class PetHotelController {
 
-    private static final String VIEWS_PET_HOTELS_LIST = "hotel/list"; 
-       
-    private PetHotelService petHotelService;
+	private static final String VIEWS_PET_HOTELS_LIST = "hotel/list";
+
+	private PetHotelService petHotelService;
 	private ClinicService clinicService;
 
 	@Autowired
@@ -55,30 +53,30 @@ public class PetHotelController {
 		this.clinicService = clinicService;
 	}
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Map<String, Object> model) {
 		createViewModel(model);
 		model.put("petHotel", new PetHotel());
 		return VIEWS_PET_HOTELS_LIST;
 	}
 
-
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public String processUpdateForm(PetHotel petHotel, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			createViewModel(model);
 			model.put("petHotel", petHotel);
-			return VIEWS_PET_HOTELS_LIST;
 		} else {
 			try {
-				this.petHotelService.save(petHotel);
-				return "redirect:/pethotel/list.html";
+				boolean valid = this.petHotelService.save(petHotel);
+				if (!valid) {
+					model.put("bookError", true);
+					model.put("petHotel", petHotel);
+				}
 			} catch (Exception e) {
-				createViewModel(model);
-				model.put("petHotel", petHotel);
-				return VIEWS_PET_HOTELS_LIST;
+				model.put("error", true);
 			}
 		}
+		createViewModel(model);
+		return VIEWS_PET_HOTELS_LIST;
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -87,7 +85,7 @@ public class PetHotelController {
 			this.petHotelService.deleteById(id);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	
+		}
 		return "redirect:/pethotel/list.html";
 	}
 

@@ -15,7 +15,13 @@
  */
 package org.springframework.samples.petclinic.repository.springdatajpa;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.PetHotel;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetHotelRepository;
@@ -28,4 +34,7 @@ import org.springframework.samples.petclinic.repository.PetHotelRepository;
  */
 public interface SpringDataPetHotelRepository extends PetHotelRepository, Repository<PetHotel,Integer> {
 
+    @Override
+    @Query("select count(p) from PetHotel p where p.pet.id=:petId and ((:initDate < p.initDate and :endDate > p.endDate) or (:initDate between p.initDate and p.endDate) or (:endDate between p.initDate and p.endDate))")
+    Integer bookingCount(@Param("petId") int petId, @Param("initDate") LocalDate initDate, @Param("endDate") LocalDate endDate) throws DataAccessException;
 }

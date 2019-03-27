@@ -2,10 +2,10 @@ DROP TABLE vet_specialties IF EXISTS;
 DROP TABLE vets IF EXISTS;
 DROP TABLE specialties IF EXISTS;
 DROP TABLE visits IF EXISTS;
+DROP TABLE hotel IF EXISTS;
 DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE owners IF EXISTS;
-DROP TABLE hotel IF EXISTS;
 
 
 CREATE TABLE vets (
@@ -71,5 +71,5 @@ CREATE TABLE hotel (
   end_date  DATE NOT NULL,
   pet_id      INTEGER NOT NULL
 );
-ALTER TABLE hotel ADD CONSTRAINT fk_hotel_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
+ALTER TABLE hotel ADD CONSTRAINT fk_hotel_pets FOREIGN KEY (pet_id) REFERENCES pets (id) ON DELETE CASCADE;
 CREATE INDEX hotel_pet_id ON hotel (pet_id);

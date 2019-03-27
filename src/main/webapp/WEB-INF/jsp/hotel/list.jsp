@@ -26,7 +26,12 @@
             <button class="btn btn-default" type="submit">Add Entry</button>
         </div>
     </form:form>
-
+    <c:if test="${bookError}">
+        <span class="alert-danger"><fmt:message key="pethotel.exists"/></span>
+    </c:if>
+    <c:if test="${error}">
+        <span class="alert-danger"><fmt:message key="pethotel.error"/></span>
+    </c:if>
     <br>
     
     <table id="petHotel" class="table table-striped">

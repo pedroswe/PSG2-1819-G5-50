@@ -15,7 +15,9 @@
  */
 package org.springframework.samples.petclinic.repository;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.samples.petclinic.model.PetHotel;
 
@@ -32,4 +34,5 @@ public interface PetHotelRepository {
     Collection<PetHotel> findAll();
     void save(PetHotel hotel);
     void deleteById(Integer id);
+	Integer bookingCount(int petId, LocalDate initDate, LocalDate endDate);
 }
