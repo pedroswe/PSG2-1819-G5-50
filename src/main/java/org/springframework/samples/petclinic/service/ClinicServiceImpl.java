@@ -17,7 +17,7 @@ package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
@@ -25,6 +25,8 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.model.Donation;
+import org.springframework.samples.petclinic.repository.DonationRepository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
@@ -47,14 +49,17 @@ public class ClinicServiceImpl implements ClinicService {
     private OwnerRepository ownerRepository;
     private VisitRepository visitRepository;
     private SpecialtyRepository specialtyRepository;
+    private DonationRepository donationRepository;
 
     @Autowired
-    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, SpecialtyRepository specialtyRepository) {
+    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, SpecialtyRepository specialtyRepository,
+    DonationRepository donationRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.specialtyRepository = specialtyRepository;
+        this.donationRepository = donationRepository;
     }
     
     @Override
@@ -154,4 +159,33 @@ public class ClinicServiceImpl implements ClinicService {
     public Specialty findSpecialtyByName(String name) throws DataAccessException{
         return specialtyRepository.findByName(name);
     }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Donation findDonationById(int id) throws DataAccessException {
+        return donationRepository.findById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Donation> findAllDonations() throws DataAccessException {
+        return donationRepository.findAll();
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Double findTotalBudget(int causeId) throws DataAccessException {
+        return donationRepository.findTotalBudgetAchievedByCauseId(causeId);
+    }
+
+    @Override
+    @Transactional
+    public void saveDonation(Donation d) throws DataAccessException {
+        donationRepository.save(d);
+    }
+
+
+
 }

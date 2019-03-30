@@ -23,6 +23,8 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.model.Specialty;
+import org.springframework.samples.petclinic.model.Donation;
+
 
 /**
  * Mostly used as a facade so all controllers have a single point of entry
@@ -62,4 +64,12 @@ public interface ClinicService {
     void saveSpecialty(Specialty specialty) throws DataAccessException;
 
     Specialty findSpecialtyByName(String name) throws DataAccessException;
+
+    Donation findDonationById(int id) throws DataAccessException; //En la implementacion se hace referencia al findById de DonationRepository
+    Collection<Donation> findAllDonations() throws DataAccessException;
+    Double findTotalBudget(int causeId) throws DataAccessException;
+    void saveDonation(Donation d) throws DataAccessException;
+
+
+
 }
