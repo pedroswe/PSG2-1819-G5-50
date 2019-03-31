@@ -8,26 +8,24 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "domain")
+@Table(name = "causes")
 
 
 
-public class Domain extends NamedEntity {
+public class Cause extends NamedEntity {
    
-    @Column(name = "domain_name")
+    @Column(name = "cause_name")
     private String name;
 
-    @JoinColumn(name = "domain_description")
+    @JoinColumn(name = "cause_description")
     private String description;
 
-    @JoinColumn(name = "domain_budgetTarget")
+    @JoinColumn(name = "budgetTarget")
     private Double budgetTarget;
 
-    @JoinColumn(name = "domain_organization")
+    @JoinColumn(name = "organization")
     private String organization;
 
-    @JoinColumn(name = "domain_status")
-    private boolean status;
 
 
     public void setName(String name) {
@@ -62,13 +60,11 @@ public class Domain extends NamedEntity {
         return this.organization;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void getStatus(boolean status) {
+        status=false;
+        if(budgetTarget <3000){
+            status=true;
+        }
+       
     }
-
-    public boolean getStatus() {
-        return this.status;
-    }
-
-
 }

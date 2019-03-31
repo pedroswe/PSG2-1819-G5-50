@@ -57,3 +57,10 @@ INSERT INTO hotel VALUES (1, '2019-03-12', '2019-03-22', 1);
 INSERT INTO hotel VALUES (2, '2019-03-13', '2019-03-23', 2);
 INSERT INTO hotel VALUES (3, '2019-03-14', '2019-03-24', 3);
 
+
+INSERT INTO causes VALUES(1, 'Fallo','Prueba 1','20020','Capi');
+INSERT INTO causes VALUES(2, 'Fallo2','Prueba 2','1000','Capi2');
+INSERT INTO causes VALUES(3, 'Fallo3','Prueba 3','200101','Capi3');
+INSERT INTO causes VALUES(4, 'Fallo4','Prueba 4','20002','Capi4');
+INSERT INTO causes VALUES(5, 'Fallo5','Prueba 5','20030','Capi5');
+
