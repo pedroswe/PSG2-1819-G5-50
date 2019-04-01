@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 
-public class Cause extends NamedEntity {
+public class Cause extends BaseEntity {
    
     @Column(name = "cause_name")
     private String name;

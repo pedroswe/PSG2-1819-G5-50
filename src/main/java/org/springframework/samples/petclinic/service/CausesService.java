@@ -15,9 +15,8 @@
  */
 package org.springframework.samples.petclinic.service;
 
-import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
+
 
 import org.springframework.samples.petclinic.model.Cause;
 
