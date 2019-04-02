@@ -17,6 +17,7 @@ package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -64,12 +65,7 @@ public interface ClinicService {
     void saveSpecialty(Specialty specialty) throws DataAccessException;
 
     Specialty findSpecialtyByName(String name) throws DataAccessException;
-
-    Donation findDonationById(int id) throws DataAccessException; //En la implementacion se hace referencia al findById de DonationRepository
-    Collection<Donation> findAllDonations() throws DataAccessException;
-    Double findTotalBudget(int causeId) throws DataAccessException;
-    void saveDonation(Donation d) throws DataAccessException;
-
-
-
+    
+    Collection<Cause> findAll() throws DataAccessException;
+    Cause findOne(Integer id) throws DataAccessException;
 }
