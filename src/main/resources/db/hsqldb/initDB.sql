@@ -79,7 +79,7 @@ CREATE INDEX hotel_pet_id ON hotel (pet_id);
 
 CREATE TABLE donation (
   id          INTEGER IDENTITY PRIMARY KEY,
-  amount  NUMBER (5,2) NOT NULL,
+  amount  NUMERIC NOT NULL,
   date DATE NOT NULL,
   cause_id INTEGER NOT NULL,
   owner_id INTEGER NOT NULL
