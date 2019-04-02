@@ -6,11 +6,9 @@ DROP TABLE hotel IF EXISTS;
 DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE owners IF EXISTS;
-<<<<<<< HEAD
-=======
 DROP TABLE hotel IF EXISTS;
 DROP TABLE donation IF EXISTS;
->>>>>>> rama_cambios
+
 
 
 CREATE TABLE vets (
@@ -86,6 +84,7 @@ CREATE TABLE donation (
   cause_id INTEGER NOT NULL,
   owner_id INTEGER NOT NULL
 );
+
 ALTER TABLE donation ADD CONSTRAINT fk_donation_cause FOREIGN KEY (cause_id) REFERENCES cause (id);
 ALTER TABLE donation ADD CONSTRAINT fk_donation_owner FOREIGN KEY (owner_id) REFERENCES owners (id);
 CREATE INDEX donation_owner_id ON donation (owner_id);
