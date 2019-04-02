@@ -22,7 +22,7 @@ public class Donation extends BaseEntity {
     private LocalDate donationDate;
 
     @ManyToOne
-    @JoinColumn(name = "cause_id")
+    @JoinColumn(name = "causes_id")
     private Cause cause;
 
     @ManyToOne

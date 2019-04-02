@@ -86,6 +86,17 @@ CREATE TABLE donation (
   owner_id INTEGER NOT NULL
 );
 
-ALTER TABLE donation ADD CONSTRAINT fk_donation_cause FOREIGN KEY (cause_id) REFERENCES cause (id);
-ALTER TABLE donation ADD CONSTRAINT fk_donation_owner FOREIGN KEY (owner_id) REFERENCES owners (id);
+ALTER TABLE donation ADD CONSTRAINT fk_donation_causes FOREIGN KEY (cause_id) REFERENCES causes (id);
+ALTER TABLE donation ADD CONSTRAINT fk_donation_owner
+FOREIGN KEY (owner_id) REFERENCES owners (id);
 CREATE INDEX donation_owner_id ON donation (owner_id);
+
+CREATE TABLE causes (
+   id        INTEGER IDENTITY PRIMARY KEY,
+  cause_name       VARCHAR(80),
+  cause_description VARCHAR(100),
+  budgetTarget NUMERIC NOT NULL,
+  organization VARCHAR(80),
+);
+ALTER TABLE causes ADD CONSTRAINT fk_causes FOREIGN KEY (owner_id) REFERENCES owners (id);
+CREATE INDEX causes_name ON causes (cause_name);
