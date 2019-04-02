@@ -57,12 +57,12 @@ INSERT INTO hotel VALUES (1, '2019-03-12', '2019-03-22', 1);
 INSERT INTO hotel VALUES (2, '2019-03-13', '2019-03-23', 2);
 INSERT INTO hotel VALUES (3, '2019-03-14', '2019-03-24', 3);
 
+INSERT INTO causes VALUES(1, 'Fallo','Prueba 1',2002.0, 'Organization 1', 1);
+INSERT INTO causes VALUES(2, 'Fallo2','Prueba 2',2002.0,'Organization 2', 1);
+INSERT INTO causes VALUES(3, 'Fallo3','Prueba 3',2002.0,'Organization 3', 1);
+INSERT INTO causes VALUES(4, 'Fallo4','Prueba 4',2002.0,'Organization 4', 1);
+INSERT INTO causes VALUES(5, 'Fallo5','Prueba 5',2002.0,'Organization 5', 1);
+
 INSERT INTO donation VALUES (1, 10.00, '2019-03-23', 1, 1);
 INSERT INTO donation VALUES (2, 100.50, '2019-03-24', 2, 2);
 INSERT INTO donation VALUES (3, 20.10, '2019-03-25', 3, 3);
-
-INSERT INTO causes VALUES(1, 'Fallo','Prueba 1',2002.0, 1);
-INSERT INTO causes VALUES(2, 'Fallo2','Prueba 2',2002.0,1);
-INSERT INTO causes VALUES(3, 'Fallo3','Prueba 3',2002.0,1);
-INSERT INTO causes VALUES(4, 'Fallo4','Prueba 4',2002.0,1);
-INSERT INTO causes VALUES(5, 'Fallo5','Prueba 5',2002.0,1);

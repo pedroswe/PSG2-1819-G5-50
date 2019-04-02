@@ -5,10 +5,10 @@ DROP TABLE visits IF EXISTS;
 DROP TABLE hotel IF EXISTS;
 DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
-DROP TABLE owners IF EXISTS;
-DROP TABLE hotel IF EXISTS;
 DROP TABLE donation IF EXISTS;
 DROP TABLE causes IF EXISTS;
+DROP TABLE owners IF EXISTS;
+DROP TABLE hotel IF EXISTS;
 
 
 
@@ -78,18 +78,6 @@ CREATE TABLE hotel (
 ALTER TABLE hotel ADD CONSTRAINT fk_hotel_pets FOREIGN KEY (pet_id) REFERENCES pets (id) ON DELETE CASCADE;
 CREATE INDEX hotel_pet_id ON hotel (pet_id);
 
-CREATE TABLE donation (
-  id          INTEGER IDENTITY PRIMARY KEY,
-  amount  NUMERIC NOT NULL,
-  date DATE NOT NULL,
-  cause_id INTEGER NOT NULL,
-  owner_id INTEGER NOT NULL
-);
-
-ALTER TABLE donation ADD CONSTRAINT fk_donation_causes FOREIGN KEY (cause_id) REFERENCES causes (id);
-ALTER TABLE donation ADD CONSTRAINT fk_donation_owner
-FOREIGN KEY (owner_id) REFERENCES owners (id);
-CREATE INDEX donation_owner_id ON donation (owner_id);
 
 CREATE TABLE causes (
    id        INTEGER IDENTITY PRIMARY KEY,
@@ -97,6 +85,20 @@ CREATE TABLE causes (
   cause_description VARCHAR(100),
   budgetTarget NUMERIC NOT NULL,
   organization VARCHAR(80),
+  owner_id INTEGER NOT NULL
 );
-ALTER TABLE causes ADD CONSTRAINT fk_causes FOREIGN KEY (owner_id) REFERENCES owners (id);
-CREATE INDEX causes_name ON causes (cause_name);
+ALTER TABLE causes ADD CONSTRAINT fk_causes FOREIGN KEY (owner_id) REFERENCES owners (id) ON DELETE CASCADE;
+CREATE INDEX causes_name ON causes (owner_id);
+
+CREATE TABLE donation (
+  id          INTEGER IDENTITY PRIMARY KEY,
+  amount  NUMERIC NOT NULL,
+  moment DATE NOT NULL,
+  cause_id INTEGER NOT NULL,
+  owner_id INTEGER NOT NULL
+);
+
+ALTER TABLE donation ADD CONSTRAINT fk_donation_cause FOREIGN KEY (cause_id) REFERENCES causes (id) ON DELETE CASCADE;
+ALTER TABLE donation ADD CONSTRAINT fk_donation_owner FOREIGN KEY (owner_id) REFERENCES owners (id) ON DELETE CASCADE;
+CREATE INDEX donation_owner_id ON donation (owner_id);
+CREATE INDEX donation_cause_id ON donation (cause_id);

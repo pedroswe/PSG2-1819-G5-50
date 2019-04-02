@@ -17,12 +17,12 @@ public class Donation extends BaseEntity {
     @Column(name = "amount")
     private Double amount;
 
-    @Column(name = "date")
+    @Column(name = "moment")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate donationDate;
 
     @ManyToOne
-    @JoinColumn(name = "causes_id")
+    @JoinColumn(name = "cause_id")
     private Cause cause;
 
     @ManyToOne
