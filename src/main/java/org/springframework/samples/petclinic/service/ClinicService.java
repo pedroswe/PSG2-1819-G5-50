@@ -74,4 +74,14 @@ public interface ClinicService {
 	Cause findOne(Integer id) throws DataAccessException;
 
 	void save(Cause cause) throws DataAccessException;
+
+	Donation findDonationById(int id) throws DataAccessException;
+
+	Collection<Donation> findAllDonations() throws DataAccessException;
+
+	Double findTotalBudgetAchievedByCaudeId(int causeId) throws DataAccessException;
+
+	void saveDonation (Donation d) throws DataAccessException;
+
+	Collection<Donation> findDonationsByCauseId(int id) throws DataAccessException;
 }

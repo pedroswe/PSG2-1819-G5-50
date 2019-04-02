@@ -56,4 +56,6 @@ public interface DonationRepository {
      * @see BaseEntity#isNew
      */
     void save(Donation d) throws DataAccessException;
+
+    Collection<Donation> findDonationsByCauseId(int id) throws DataAccessException;
 }
