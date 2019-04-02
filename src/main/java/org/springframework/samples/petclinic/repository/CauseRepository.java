@@ -15,9 +15,7 @@
  */
 package org.springframework.samples.petclinic.repository;
 
-import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.samples.petclinic.model.Cause;
 
@@ -31,6 +29,7 @@ import org.springframework.samples.petclinic.model.Cause;
  * @author Michael Isvy
  */
 public interface CauseRepository {
-    Collection<Cause> findAll();
+    Collection<Cause> findAll(Integer ownerId);
     Cause findById(Integer id);
+    void save(Cause cause);
 }

@@ -159,12 +159,17 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
 	@Override
-	public Collection<Cause> findAll() {
-		return causesRepository.findAll();
+	public Collection<Cause> findAll(Integer ownerId) {
+		return causesRepository.findAll(ownerId);
 	}
 
 	@Override
 	public Cause findOne(Integer id) {
 		return causesRepository.findById(id);
+	}
+
+	@Override
+	public void save(Cause cause) throws DataAccessException {
+		this.causesRepository.save(cause);
 	}
 }

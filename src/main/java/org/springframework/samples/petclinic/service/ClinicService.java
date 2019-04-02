@@ -24,6 +24,7 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.model.Specialty;
+import org.springframework.samples.petclinic.model.Donation;
 
 /**
  * Mostly used as a facade so all controllers have a single point of entry
@@ -32,38 +33,45 @@ import org.springframework.samples.petclinic.model.Specialty;
  */
 public interface ClinicService {
 
-    Collection<PetType> findPetTypes() throws DataAccessException;
+	Collection<PetType> findPetTypes() throws DataAccessException;
 
-    Owner findOwnerById(int id) throws DataAccessException;
+	Owner findOwnerById(int id) throws DataAccessException;
 
-    Pet findPetById(int id) throws DataAccessException;
+	Pet findPetById(int id) throws DataAccessException;
 
-    void savePet(Pet pet) throws DataAccessException;
+	void savePet(Pet pet) throws DataAccessException;
 
-    void saveVisit(Visit visit) throws DataAccessException;
+	void saveVisit(Visit visit) throws DataAccessException;
 
-    Collection<Vet> findVets() throws DataAccessException;
+	Collection<Vet> findVets() throws DataAccessException;
 
-    void saveOwner(Owner owner) throws DataAccessException;
+	void saveOwner(Owner owner) throws DataAccessException;
 
-    Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException;
+	Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException;
 
 	Collection<Visit> findVisitsByPetId(int petId);
 
 	void deleteByIdPet(Integer id);
+
 	void deleteByIdVet(Integer id);
+
 	void deleteOwnerById(Integer id);
-    Collection<Pet> findAllPets();
-    void saveVet(Vet vet) throws DataAccessException;
 
-    Collection<Specialty> findSpecialtys() throws DataAccessException;
+	Collection<Pet> findAllPets();
 
-    Vet findVetById(int id) throws DataAccessException;
+	void saveVet(Vet vet) throws DataAccessException;
 
-    void saveSpecialty(Specialty specialty) throws DataAccessException;
+	Collection<Specialty> findSpecialtys() throws DataAccessException;
 
-    Specialty findSpecialtyByName(String name) throws DataAccessException;
-    
-    Collection<Cause> findAll() throws DataAccessException;
-    Cause findOne(Integer id) throws DataAccessException;
+	Vet findVetById(int id) throws DataAccessException;
+
+	void saveSpecialty(Specialty specialty) throws DataAccessException;
+
+	Specialty findSpecialtyByName(String name) throws DataAccessException;
+
+	Collection<Cause> findAll(Integer id) throws DataAccessException;
+
+	Cause findOne(Integer id) throws DataAccessException;
+
+	void save(Cause cause) throws DataAccessException;
 }
