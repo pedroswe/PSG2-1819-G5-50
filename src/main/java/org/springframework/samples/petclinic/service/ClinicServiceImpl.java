@@ -19,6 +19,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -26,6 +27,7 @@ import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.CauseRepository;
+import org.springframework.samples.petclinic.repository.DonationRepository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
@@ -49,15 +51,17 @@ public class ClinicServiceImpl implements ClinicService {
     private VisitRepository visitRepository;
     private SpecialtyRepository specialtyRepository;
     private CauseRepository causesRepository;
+    private DonationRepository donationRepository;
 
     @Autowired
-    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, SpecialtyRepository specialtyRepository, CauseRepository causeRepository) {
+    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, SpecialtyRepository specialtyRepository, CauseRepository causeRepository, DonationRepository donationRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.specialtyRepository = specialtyRepository;
         this.causesRepository = causeRepository;
+        this.donationRepository = donationRepository;
     }
     
     @Override
@@ -110,17 +114,26 @@ public class ClinicServiceImpl implements ClinicService {
         return vetRepository.findAll();
     }
 
-	@Override
+    @Override
+    @Transactional(readOnly = true)
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
 	}
 
+    @Override
+    @Transactional(readOnly = true)
 	public void deleteByIdPet(Integer id) {
 		this.petRepository.deleteById(id);
-	}
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
 	public void deleteByIdVet(Integer id) {
 		this.vetRepository.deleteById(id);
-	}
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
 	public void deleteOwnerById(Integer id) {
 		this.ownerRepository.deleteById(id);
 	}
@@ -148,7 +161,8 @@ public class ClinicServiceImpl implements ClinicService {
     public void saveSpecialty(Specialty specialty) throws DataAccessException{
         specialtyRepository.save(specialty);
     }
-
+    @Override
+    @Transactional(readOnly = true)
     public Collection<Pet> findAllPets(){
         return this.petRepository.findAll();
     }
@@ -158,18 +172,50 @@ public class ClinicServiceImpl implements ClinicService {
         return specialtyRepository.findByName(name);
     }
 
-	@Override
+    @Override
+    @Transactional(readOnly = true)
 	public Collection<Cause> findAll(Integer ownerId) {
 		return causesRepository.findAll(ownerId);
 	}
 
-	@Override
+    @Override
+    @Transactional(readOnly = true)
 	public Cause findOne(Integer id) {
 		return causesRepository.findById(id);
 	}
 
-	@Override
+    @Override
+    @Transactional(readOnly = true)
 	public void save(Cause cause) throws DataAccessException {
 		this.causesRepository.save(cause);
-	}
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Donation findDonationById(int id) throws DataAccessException{
+        return this.donationRepository.findById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+	public Collection<Donation> findAllDonations() throws DataAccessException{
+        return this.donationRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+	public Double findTotalBudgetAchievedByCaudeId(int causeId) throws DataAccessException{
+        return this.donationRepository.findTotalBudgetAchievedByCauseId(causeId);
+
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+	public void saveDonation (Donation d) throws DataAccessException{
+        this.donationRepository.save(d);
+    }
+
+
+
+
 }
