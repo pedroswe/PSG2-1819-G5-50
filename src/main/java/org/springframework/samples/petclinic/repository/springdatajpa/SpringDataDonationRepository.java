@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.repository.springdatajpa;
 
+import java.util.Collection;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
@@ -45,4 +46,7 @@ public interface SpringDataDonationRepository extends DonationRepository, Reposi
     @Query("SELECT sum(d.amount) from Donation d WHERE d.cause.id = ?1")
     Double findTotalBudgetAchievedByCauseId(int causeId) throws DataAccessException;
    
+    
+    @Query("SELECT * from Donation d WHERE d.cause.id = ?1")
+    Collection<Donation> findDonationsByCauseId(int causeId) throws DataAccessException;
 }

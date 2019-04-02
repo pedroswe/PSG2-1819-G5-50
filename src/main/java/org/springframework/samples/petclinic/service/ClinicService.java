@@ -82,4 +82,6 @@ public interface ClinicService {
 	Double findTotalBudgetAchievedByCaudeId(int causeId) throws DataAccessException;
 
 	void saveDonation (Donation d) throws DataAccessException;
+
+	Collection<Donation> findDonationsByCauseId(int id) throws DataAccessException;
 }

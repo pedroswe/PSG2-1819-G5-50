@@ -215,7 +215,11 @@ public class ClinicServiceImpl implements ClinicService {
         this.donationRepository.save(d);
     }
 
-
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Donation> findDonationsByCauseId(int causeId) throws DataAccessException{
+        return this.donationRepository.findDonationsByCauseId(causeId);
+    }
 
 
 }
