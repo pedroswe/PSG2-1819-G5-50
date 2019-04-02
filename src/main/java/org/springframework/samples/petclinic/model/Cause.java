@@ -4,31 +4,44 @@ package org.springframework.samples.petclinic.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
 @Table(name = "causes")
-
-
-
 public class Cause extends BaseEntity {
    
     @Column(name = "cause_name")
+    @NotEmpty
     private String name;
 
-    @JoinColumn(name = "cause_description")
+    @Column(name = "cause_description")
+    @NotEmpty
     private String description;
 
-    @JoinColumn(name = "budgetTarget")
+    @Column(name = "budgetTarget")
     private Double budgetTarget;
 
-    @JoinColumn(name = "organization")
+    @Column(name = "organization")
+    @NotEmpty
     private String organization;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
 
 
-    public void setName(String name) {
+    public Owner getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
+
+	public void setName(String name) {
         this.name = name;
     }
 

@@ -30,7 +30,7 @@ import org.springframework.samples.petclinic.model.Cause;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface CausesRepository {
+public interface CauseRepository {
     Collection<Cause> findAll();
     Cause findById(Integer id);
 }

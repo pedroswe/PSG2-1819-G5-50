@@ -74,15 +74,3 @@ CREATE TABLE hotel (
 );
 ALTER TABLE hotel ADD CONSTRAINT fk_hotel_pets FOREIGN KEY (pet_id) REFERENCES pets (id) ON DELETE CASCADE;
 CREATE INDEX hotel_pet_id ON hotel (pet_id);
-
-
-
-CREATE TABLE causes (
-   id        INTEGER IDENTITY PRIMARY KEY,
-  cause_name       VARCHAR(80),
-  cause_description VARCHAR(100),
-  budgetTarget INTEGER NOT NULL,
-  organization VARCHAR(80),
-);
-ALTER TABLE causes ADD CONSTRAINT fk_causes FOREIGN KEY (owner_id) REFERENCES owners (id);
-CREATE INDEX causes_name ON causes (cause_name);
