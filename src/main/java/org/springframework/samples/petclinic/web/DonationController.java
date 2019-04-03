@@ -40,7 +40,7 @@ public class DonationController {
 	}
     
     // GET Donation
-    @RequestMapping(value = "/donation/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/donations/{donationId}/new", method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
         Collection<Owner> owners = this.clinicService.findAllOwners();
 		Donation donation = new Donation();
@@ -50,14 +50,24 @@ public class DonationController {
     }
 
     // POST Donation
-    @RequestMapping(value = "/donation/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/donations/{donationId}/new", method = RequestMethod.POST)
     public String processCreationForm(Donation donation, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             Collection<Owner> owners = this.clinicService.findAllOwners();
             model.put("owners", owners);
+            model.put("donation", donation);
             return VIEWS_DONATION_CREATE_OR_UPDATE_FORM;
 		} else {
-			this.clinicService.saveDonation(donation);
+            try{
+                Boolean valid = this.clinicService.saveDonation(donation);
+                if (!valid){
+                    model.put("donationError", true);
+                    model.put("donation", donation);
+                }
+            }catch(Exception e){
+                model.put("error", true);
+            }
+			
 			return "redirect:/donation/" + donation.getId();
         }
         
@@ -76,6 +86,10 @@ public class DonationController {
         result.addObject("cause", cause);
         return result;
 
+    }
+
+    private ModelAndView createEditModelAndView(){
+        return null;
     }
 
 }
