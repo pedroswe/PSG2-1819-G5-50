@@ -38,10 +38,8 @@
                 </c:forEach>
             </tbody>
         </table>
-        <c:if test="${donation.cause.budgetTarget >  totalBudgetAchieved}">
+        <c:if test="${cause.budgetTarget >  totalBudgetAchieved}">
             <a href="create">Register a donation</a>
-            </c:if>
-            <c:out value="${donation.cause.budgetTarget} ${totalBudgetAchieved}" />
-            <c:out value="${donation.cause}" />
+        </c:if>
     </jsp:body>
 </petclinic:layout>

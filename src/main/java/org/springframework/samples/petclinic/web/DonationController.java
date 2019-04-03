@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.service.ClinicService;
@@ -68,10 +68,12 @@ public class DonationController {
     public ModelAndView listDonationsCause(@PathVariable("causeId") int causeId) {
         // aqui va la query que devuelve todas las donations de una cause
         Collection<Donation> donationsVictor = clinicService.findDonationsByCauseId(causeId);
+        Cause cause = this.clinicService.findCauseById(causeId);
         Double totalBudgetAchieved = this.clinicService.findTotalBudgetAchievedByCauseId(causeId);
         ModelAndView result = new ModelAndView("/cause/showCause");
         result.addObject("donationsVictor", donationsVictor);
         result.addObject("totalBudgetAchieved", totalBudgetAchieved);
+        result.addObject("cause", cause);
         return result;
 
     }
