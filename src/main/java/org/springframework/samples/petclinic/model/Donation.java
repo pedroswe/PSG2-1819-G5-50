@@ -55,11 +55,11 @@ public class Donation extends BaseEntity {
         this.cause = cause;
     }
 
-    public Owner getOwner() {
+    public Owner getDonator() {
         return this.donator;
     }
 
-    public void setOwner(Owner donator) {
+    public void setDonator(Owner donator) {
         this.donator = donator;
     }
 

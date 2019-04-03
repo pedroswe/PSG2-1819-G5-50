@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <petclinic:layout pageName="causesList">
 
@@ -49,9 +50,10 @@
                     </td>
                     </c:if>
                     
-                    <td>
-                    <a href="donations/${cause.id}/list">Donate</a>
-                    </td>
+                    <td><spring:url
+                        value="/donations/{causeId}/list" var="donateToCause">
+                        <spring:param name="causeId" value="${cause.id}" />
+                    </spring:url> <a href="${fn:escapeXml(donateToCause)}">Donate</a></td>
                     
                     
                     

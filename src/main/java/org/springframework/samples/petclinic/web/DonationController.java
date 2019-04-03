@@ -67,9 +67,11 @@ public class DonationController {
     @RequestMapping(value = "/donations/{causeId}/list", method = RequestMethod.GET)
     public ModelAndView listDonationsCause(@PathVariable("causeId") int causeId) {
         // aqui va la query que devuelve todas las donations de una cause
-        Collection<Donation> donations = clinicService.findDonationsByCauseId(causeId);
+        Collection<Donation> donationsVictor = clinicService.findDonationsByCauseId(causeId);
+        Double totalBudgetAchieved = this.clinicService.findTotalBudgetAchievedByCauseId(causeId);
         ModelAndView result = new ModelAndView("/cause/showCause");
-
+        result.addObject("donationsVictor", donationsVictor);
+        result.addObject("totalBudgetAchieved", totalBudgetAchieved);
         return result;
 
     }

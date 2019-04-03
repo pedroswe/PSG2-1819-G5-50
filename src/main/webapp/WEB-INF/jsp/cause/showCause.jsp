@@ -8,7 +8,7 @@
 
 
 
-<petclinic:layout pagename="showCause">
+<petclinic:layout pageName="showCause">
 
     <jsp:body>
         <h2>Cause Donation List</h2>
@@ -23,20 +23,25 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${donations}" var="donation">
+                <c:forEach items="${donationsVictor}" var="donation">
                     <tr>
                         <td>
-                            <c:out value="$donation.donationDate" />
+                            <c:out value="${donation.moment}" />
                         </td>
                         <td>
-                            <c:out value="$donation.amount" />
+                            <c:out value="${donation.amount}" />
                         </td>
                         <td>
-                            <c:out value="$donation.donator" />
+                            <c:out value="${donation.donator.firstName} ${donation.donator.lastName}" />
                         </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
+        <c:if test="${donation.cause.budgetTarget >  totalBudgetAchieved}">
+            <a href="create">Register a donation</a>
+            </c:if>
+            <c:out value="${donation.cause.budgetTarget} ${totalBudgetAchieved}" />
+            <c:out value="${donation.cause}" />
     </jsp:body>
 </petclinic:layout>
