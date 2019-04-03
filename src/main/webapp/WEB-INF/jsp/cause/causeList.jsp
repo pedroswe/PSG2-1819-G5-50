@@ -18,7 +18,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Burget Target</th>
-             <th>Total</th>
+            <th>Total</th>
             <th>Organization</th>
             <c:if test="${ownerId > 0}">
             <th>Edit</th>
@@ -51,7 +51,7 @@
                     </c:if>
                     
                     <td><spring:url
-                        value="/donations/{causeId}/list" var="donateToCause">
+                        value="/cause/{causeId}/donations/list" var="donateToCause">
                         <spring:param name="causeId" value="${cause.id}" />
                     </spring:url> <a href="${fn:escapeXml(donateToCause)}">Donate</a></td>
                     
