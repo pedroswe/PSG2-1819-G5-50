@@ -52,6 +52,7 @@ public class DonationController {
     // POST Donation
     @RequestMapping(value = "/donations/{donationId}/new", method = RequestMethod.POST)
     public String processCreationForm(Donation donation, BindingResult result, ModelMap model) {
+        
         if (result.hasErrors()) {
             Collection<Owner> owners = this.clinicService.findAllOwners();
             model.put("owners", owners);
@@ -59,8 +60,12 @@ public class DonationController {
             return VIEWS_DONATION_CREATE_OR_UPDATE_FORM;
 		} else {
             try{
-                Boolean valid = this.clinicService.saveDonation(donation);
-                if (!valid){
+               
+                this.clinicService.saveDonation(donation);
+                
+                model.put("donationSaved", donation);
+                boolean a = true;
+                if (a){
                     model.put("donationError", true);
                     model.put("donation", donation);
                 }
@@ -68,9 +73,9 @@ public class DonationController {
                 model.put("error", true);
             }
 			
-			return "redirect:/donation/" + donation.getId();
+			
         }
-        
+        return initCreationForm(model);        
 	}
 
     // LIST
