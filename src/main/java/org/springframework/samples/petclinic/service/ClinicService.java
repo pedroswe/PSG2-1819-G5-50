@@ -84,4 +84,6 @@ public interface ClinicService {
 	void saveDonation (Donation d) throws DataAccessException;
 
 	Collection<Donation> findDonationsByCauseId(int id) throws DataAccessException;
+
+	Collection<Owner> findAllOwners() throws DataAccessException;
 }

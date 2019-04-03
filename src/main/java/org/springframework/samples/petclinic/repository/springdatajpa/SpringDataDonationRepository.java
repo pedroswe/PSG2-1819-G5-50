@@ -47,6 +47,6 @@ public interface SpringDataDonationRepository extends DonationRepository, Reposi
     Double findTotalBudgetAchievedByCauseId(int causeId) throws DataAccessException;
    
     
-    @Query("SELECT * from Donation d WHERE d.cause.id = ?1")
+    @Query("SELECT d from Donation d WHERE d.cause.id = ?1")
     Collection<Donation> findDonationsByCauseId(int causeId) throws DataAccessException;
 }
