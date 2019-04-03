@@ -35,14 +35,14 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 5         |  24/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
 | Day 6         |  25/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
 | Day 7         |  26/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
-| Day 8         |  27/03/2019   |    :smiley:    |                |                |                |    :smiley:    |    :smiley:    |
+| Day 8         |  27/03/2019   |    :smiley:    |                |                |                |:neutral_face:  |    :smiley:    |
 | Day 9         |  28/03/2019   |                |                |                |                |                |                |
 | Day 9         |  29/03/2019   |                |                |                |                |                |                |
 | Day 10        |  30/03/2019   |  :smiley:      |                |                |                |                |                |
 | Day 11        |  31/03/2019   |                |                |                |                |                |                |
 | Day 12        |  01/04/2019   |                |  :smiley:      |                |                |                |                |
 | Day 13        |  02/04/2019   |                |                |                |                |                |                |
-| Day 14        |  03/04/2019   |                |                |                |                |                |                |
+| Day 14        |  03/04/2019   |                |                |                |                |:neutral_face:  |:neutral_face:  |
 | Day 15        |  04/04/2019   |                |                |                |                |                |                |
 | Day 16        |  05/04/2019   |                |                |                |                |                |                |
 | Day 17        |  06/04/2019   |                |                |                |                |                |                |
