@@ -204,7 +204,7 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional(readOnly = true)
-	public boolean saveDonation (Donation d) throws DataAccessException{
+	public void saveDonation (Donation d) throws DataAccessException{
         return this.donationRepository.save(d);
     }
 

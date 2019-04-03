@@ -81,7 +81,7 @@ public interface ClinicService {
 
 	Collection<Donation> findAllDonations() throws DataAccessException;
 
-	boolean saveDonation (Donation d) throws DataAccessException;
+	void saveDonation (Donation d) throws DataAccessException;
 
 	Collection<Donation> findDonationsByCauseId(int id) throws DataAccessException;
 

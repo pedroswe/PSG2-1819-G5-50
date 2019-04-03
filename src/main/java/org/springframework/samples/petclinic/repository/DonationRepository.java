@@ -55,7 +55,7 @@ public interface DonationRepository {
      * @param d the <code>Donation</code> to save
      * @see BaseEntity#isNew
      */
-    boolean save(Donation d) throws DataAccessException;
+    void save(Donation d) throws DataAccessException;
 
     Collection<Donation> findDonationsByCauseId(int id) throws DataAccessException;
 }
