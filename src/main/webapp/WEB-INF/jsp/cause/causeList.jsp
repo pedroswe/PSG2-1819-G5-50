@@ -19,7 +19,7 @@
             <th>Burget Target</th>
              <th>Total</th>
             <th>Organization</th>
-            <th>Delete</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>

@@ -58,7 +58,7 @@ public class DonationController {
             return VIEWS_DONATION_CREATE_OR_UPDATE_FORM;
 		} else {
 			this.clinicService.saveDonation(donation);
-			return "redirect:/donations/" + donation.getId();
+			return "redirect:/donation/" + donation.getId();
         }
         
 	}

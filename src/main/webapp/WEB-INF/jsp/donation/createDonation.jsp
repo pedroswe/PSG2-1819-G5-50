@@ -19,8 +19,11 @@
         <c:if test="${donation['new']}">New </c:if> Donation
     </h2>
     <form:form modelAttribute="donation" class="form-horizontal" >
-                    
-            <petclinic:selectField label="Owner" name="owner" names="${owners}" size="5"/>
+            <input type="hidden" name="ownerId" value="${owner.id}"/>
+            <input type="hidden" name="causeId" value="${causeId}"/>
+            <div class="control-group">
+                    <petclinic:selectField label="Owner" name="owner" names="${owners}" size="5"/>
+            </div>
             <petclinic:inputField label="Moment" name="moment"/>
             <petclinic:inputField label="Amount" name="amount"/>
         
