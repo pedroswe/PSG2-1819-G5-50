@@ -39,7 +39,7 @@
             </tbody>
         </table>
         <c:if test="${cause.budgetTarget >  totalBudgetAchieved}">
-            <a href="new">Register a donation</a>
+            <a href="new">Register a donation</a> 
         </c:if>
     </jsp:body>
 </petclinic:layout>

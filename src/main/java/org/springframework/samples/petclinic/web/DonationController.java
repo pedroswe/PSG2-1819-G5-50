@@ -40,22 +40,28 @@ public class DonationController {
 	}
     
     // GET Donation
-    @RequestMapping(value = "/donations/{donationId}/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/cause/{causeId}/donations/new", method = RequestMethod.GET)
 	public String initCreationForm(Map<String, Object> model) {
         Collection<Owner> owners = this.clinicService.findAllOwners();
+        //Cause cause = this.clinicService.findCauseById(causeId);
 		Donation donation = new Donation();
+        
         model.put("donation", donation);
         model.put("owners", owners);
+        //model.put("cause", cause);
 		return VIEWS_DONATION_CREATE_OR_UPDATE_FORM;
     }
 
     // POST Donation
-    @RequestMapping(value = "/donations/{donationId}/new", method = RequestMethod.POST)
-    public String processCreationForm(Donation donation, BindingResult result, ModelMap model) {
-        
-        if (result.hasErrors()) {
+    @RequestMapping(value = "/cause/{causeId}/donations/new", method = RequestMethod.POST)
+    public String processCreationForm(@PathVariable("causeId") int causeId, Donation donation, BindingResult result, ModelMap model) {
+        Cause cause = this.clinicService.findCauseById(causeId);
+        donation.setCause(cause);
+        if (donation.getCause()==null) {
             Collection<Owner> owners = this.clinicService.findAllOwners();
             model.put("owners", owners);
+            model.put("donation", donation);
+            model.put("donationError", true);
             model.put("donation", donation);
             return VIEWS_DONATION_CREATE_OR_UPDATE_FORM;
 		} else {
@@ -65,7 +71,7 @@ public class DonationController {
                 
                 model.put("donationSaved", donation);
                 boolean a = true;
-                if (a){
+                if (donation.equals(null)){
                     model.put("donationError", true);
                     model.put("donation", donation);
                 }
@@ -75,11 +81,11 @@ public class DonationController {
 			
 			
         }
-        return initCreationForm(model);        
+        return "redirect:/cause/list";       
 	}
 
     // LIST
-    @RequestMapping(value = "/donations/{causeId}/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/cause/{causeId}/donations/list", method = RequestMethod.GET)
     public ModelAndView listDonationsCause(@PathVariable("causeId") int causeId) {
         // aqui va la query que devuelve todas las donations de una cause
         Collection<Donation> donationsVictor = clinicService.findDonationsByCauseId(causeId);
