@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.web;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 import java.util.Map;
@@ -57,6 +58,7 @@ public class DonationController {
     public String processCreationForm(@PathVariable("causeId") int causeId, Donation donation, BindingResult result, ModelMap model) {
         Cause cause = this.clinicService.findCauseById(causeId);
         donation.setCause(cause);
+        donation.setMoment(LocalDate.now());
         if (donation.getCause()==null) {
             Collection<Owner> owners = this.clinicService.findAllOwners();
             model.put("owners", owners);
@@ -66,20 +68,19 @@ public class DonationController {
             return VIEWS_DONATION_CREATE_OR_UPDATE_FORM;
 		} else {
             try{
-               
+                int antes = this.clinicService.findDonationsByCauseId(cause.getId()).size();
                 this.clinicService.saveDonation(donation);
+                int despues = this.clinicService.findDonationsByCauseId(cause.getId()).size();
                 
                 model.put("donationSaved", donation);
-                boolean a = true;
-                if (donation.equals(null)){
+                boolean iguales = antes == despues;
+                if (iguales){
                     model.put("donationError", true);
                     model.put("donation", donation);
                 }
             }catch(Exception e){
                 model.put("error", true);
             }
-			
-			
         }
         return "redirect:/cause/list";       
 	}
@@ -98,10 +99,5 @@ public class DonationController {
         return result;
 
     }
-
-    private ModelAndView createEditModelAndView(){
-        return null;
-    }
-
 }
 

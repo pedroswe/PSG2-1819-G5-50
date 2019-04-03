@@ -21,14 +21,19 @@
         <form:form modelAttribute="donation" class="form-horizontal">
             <c:out value="${cause}" />
             <input type="hidden" name="cause" value="${cause}" />
+            <input type="hidden" name="moment" value="${moment}" />
             <div class="control-group">
                 <petclinic:selectField label="Donator" name="donator" names="${owners}" size="5" />
             </div>
-            <petclinic:inputField label="Moment" name="moment" />
+
             <petclinic:inputField label="Amount" name="amount" />
 
             <div class="form-group">
                 <button class="btn btn-default" type="submit">Save Donation</button>
+                <spring:url value="/cause/{causeId}/donations/list" var="causeUrl">
+                    <spring:param name="causeId" value="causeId" />
+                </spring:url>
+                <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Go back</a>
             </div>
 
         </form:form>
@@ -41,31 +46,5 @@
             <span class="alert-danger">
                 <fmt:message key="donation.UnexpectedError" /></span>
         </c:if>
-        <br>
-
-        <spring:url value="/cause/{causeId}/edit" var="causeUrl">
-            <spring:param name="causeId" value="${causeId}" />
-        </spring:url>
-        <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Go back</a>
-    
-        <br>
-        <c:out value="${donationSaved}" />
-        <br>
-        <c:out value="${donationSaved.id}" />
-        <br>
-        <c:out value="${donationSaved.moment}" />
-        <br>
-        <c:out value="${donationSaved.amount}" />
-        <br>
-        <c:out value="${donationSaved.donator.id}" />
-        <br>
-        <c:out value="${donationSaved.donator.firstName}" />
-        <br>
-        <c:out value="${donationSaved.donator.lastName}" />
-        <br>
-        <c:out value="${donation.cause}" />
-        <br>
-        <c:out value="${causeId}" />
-
     </jsp:body>
 </petclinic:layout>
