@@ -19,7 +19,10 @@
             <th>Burget Target</th>
              <th>Total</th>
             <th>Organization</th>
+            <c:if test="${ownerId > 0}">
             <th>Edit</th>
+            </c:if>
+            <th>Do a donation</th>
         </tr>
         </thead>
         <tbody>
@@ -45,6 +48,13 @@
                     <a href="edit/${cause.id}">Edit</a>
                     </td>
                     </c:if>
+                    
+                    <td>
+                    <a href="donations/${cause.id}/list">Donate</a>
+                    </td>
+                    
+                    
+                    
                 </tr>
             </c:forEach>
         </tbody>

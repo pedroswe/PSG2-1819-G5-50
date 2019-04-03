@@ -42,7 +42,7 @@
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Pet Hotel</span>
 				</petclinic:menuItem>
-				<petclinic:menuItem active="${name eq 'Causes'}" url="/cause/0/list"
+				<petclinic:menuItem active="${name eq 'Causes'}" url="/cause/list"
 					title="Causes">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Causes</span>

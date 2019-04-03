@@ -16,14 +16,41 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = { "/cause/{ownerId}", "/cause" })
+@RequestMapping(value = { "/cause" })
 public class CauseController {
 
 	@Autowired
-	private ClinicService service;
-
+	private ClinicService clinicService;
+	
+	//LIST general
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(@PathVariable("ownerId") Integer ownerId) {
+	public ModelAndView list() {
+
+		ModelAndView result;
+
+		result = new ModelAndView("cause/causeList");
+
+		Collection<Cause> causes = new ArrayList<Cause>();
+
+		causes = this.clinicService.findAllCauses();
+		result.addObject("causes", causes);
+		Map<Integer, Double> map = new HashMap<Integer, Double>();
+
+		for (Cause c : causes) {
+			try {
+				Double d = this.clinicService.findTotalBudgetAchievedByCauseId(c.getId());
+				map.put(c.getId(), d);
+			} catch (Throwable oops) {
+				map.put(c.getId(), 0.0);
+			}
+		}
+		result.addObject("map", map);
+		return result;
+	}
+
+	//LIST FOR OWNER
+	@RequestMapping(value = "/{ownerId}/list", method = RequestMethod.GET)
+	public ModelAndView listOwner(@PathVariable("ownerId") Integer ownerId) {
 
 		ModelAndView result;
 
@@ -32,16 +59,16 @@ public class CauseController {
 		Collection<Cause> causes = new ArrayList<Cause>();
 
 		if (ownerId == 0) {
-			causes = service.findAllCauses();
+			causes = clinicService.findAllCauses();
 		} else {
-			causes = service.findAllCausesByOwnerId(ownerId);
+			causes = clinicService.findAllCausesByOwnerId(ownerId);
 		}
 		result.addObject("causes", causes);
 		Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 		for (Cause c : causes) {
 			try {
-				Double d = this.service.findTotalBudgetAchievedByCauseId(c.getId());
+				Double d = this.clinicService.findTotalBudgetAchievedByCauseId(c.getId());
 				map.put(c.getId(), d);
 			} catch (Throwable oops) {
 				map.put(c.getId(), 0.0);
@@ -72,7 +99,7 @@ public class CauseController {
 
 		result = new ModelAndView("cause/causeEdit");
 
-		result.addObject("cause", service.findCauseById(id));
+		result.addObject("cause", clinicService.findCauseById(id));
 		result.addObject("requestURI", "../edit/" + id);
 		return result;
 	}
@@ -88,15 +115,15 @@ public class CauseController {
 			result.addObject("cause", cause);
 		} else {
 			if (causeId == 0) {
-				cause.setOwner(this.service.findOwnerById(ownerId));
-				this.service.saveCause(cause);
+				cause.setOwner(this.clinicService.findOwnerById(ownerId));
+				this.clinicService.saveCause(cause);
 			} else {
-				Cause c = this.service.findCauseById(causeId);
+				Cause c = this.clinicService.findCauseById(causeId);
 				c.setName(cause.getName());
 				c.setDescription(cause.getDescription());
 				c.setBudgetTarget(c.getBudgetTarget());
 				c.setOrganization(cause.getOrganization());
-				this.service.saveCause(c);
+				this.clinicService.saveCause(c);
 			}
 
 			result = new ModelAndView("redirect:/cause/" + ownerId + "/list");

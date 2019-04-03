@@ -68,7 +68,7 @@ public class DonationController {
     public ModelAndView listDonationsCause(@PathVariable("causeId") int causeId) {
         // aqui va la query que devuelve todas las donations de una cause
         Collection<Donation> donations = clinicService.findDonationsByCauseId(causeId);
-        ModelAndView result = new ModelAndView("");
+        ModelAndView result = new ModelAndView("/cause/showCause");
 
         return result;
 
