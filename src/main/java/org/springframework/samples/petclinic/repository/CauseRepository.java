@@ -33,7 +33,7 @@ import org.springframework.samples.petclinic.model.Cause;
 public interface CauseRepository {
 	Collection<Cause> findAll();
 
-	Collection<Cause> findAll(Integer ownerId);
+	Collection<Cause> findAllCausesByOwnerId(Integer ownerId);
 
 	Cause findById(Integer id);
 

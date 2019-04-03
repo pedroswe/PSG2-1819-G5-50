@@ -32,9 +32,9 @@ public class CauseController {
 		Collection<Cause> causes = new ArrayList<Cause>();
 
 		if (ownerId == 0) {
-			causes = service.findAll();
+			causes = service.findAllCauses();
 		} else {
-			causes = service.findAll(ownerId);
+			causes = service.findAllCausesByOwnerId(ownerId);
 		}
 		result.addObject("causes", causes);
 		Map<Integer, Double> map = new HashMap<Integer, Double>();
@@ -72,7 +72,7 @@ public class CauseController {
 
 		result = new ModelAndView("cause/causeEdit");
 
-		result.addObject("cause", service.findOne(id));
+		result.addObject("cause", service.findCauseById(id));
 		result.addObject("requestURI", "../edit/" + id);
 		return result;
 	}
@@ -89,14 +89,14 @@ public class CauseController {
 		} else {
 			if (causeId == 0) {
 				cause.setOwner(this.service.findOwnerById(ownerId));
-				this.service.save(cause);
+				this.service.saveCause(cause);
 			} else {
-				Cause c = this.service.findOne(causeId);
+				Cause c = this.service.findCauseById(causeId);
 				c.setName(cause.getName());
 				c.setDescription(cause.getDescription());
 				c.setBudgetTarget(c.getBudgetTarget());
 				c.setOrganization(cause.getOrganization());
-				this.service.save(c);
+				this.service.saveCause(c);
 			}
 
 			result = new ModelAndView("redirect:/cause/" + ownerId + "/list");

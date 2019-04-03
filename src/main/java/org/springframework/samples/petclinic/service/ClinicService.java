@@ -71,21 +71,19 @@ public interface ClinicService {
 
 	Double findTotalBudgetAchievedByCauseId(int causeId) throws DataAccessException;
 	
-	Collection<Cause> findAll() throws DataAccessException;
-	
-	Collection<Cause> findAll(Integer id) throws DataAccessException;
+	Collection<Cause> findAllCausesByOwnerId(Integer id) throws DataAccessException;
 
-	Cause findOne(Integer id) throws DataAccessException;
+	Cause findCauseById(Integer id) throws DataAccessException;
 
-	void save(Cause cause) throws DataAccessException;
+	void saveCause(Cause cause) throws DataAccessException;
 
 	Donation findDonationById(int id) throws DataAccessException;
 
 	Collection<Donation> findAllDonations() throws DataAccessException;
 
-	Double findTotalBudgetAchievedByCaudeId(int causeId) throws DataAccessException;
-
 	void saveDonation (Donation d) throws DataAccessException;
 
 	Collection<Donation> findDonationsByCauseId(int id) throws DataAccessException;
+
+	Collection<Cause> findAllCauses() throws DataAccessException;
 }

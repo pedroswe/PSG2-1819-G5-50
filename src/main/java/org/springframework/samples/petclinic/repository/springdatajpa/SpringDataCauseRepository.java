@@ -11,6 +11,6 @@ import org.springframework.samples.petclinic.repository.CauseRepository;
 public interface SpringDataCauseRepository extends CauseRepository, Repository<Cause, Integer> {
 	
 	@Query("select c from Cause c where c.owner.id = ?1")
-	Collection<Cause> findAll(Integer ownerId) throws DataAccessException;
+	Collection<Cause> findAllCausesByOwnerId(Integer ownerId) throws DataAccessException;
 	
 }
