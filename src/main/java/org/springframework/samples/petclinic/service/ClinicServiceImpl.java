@@ -225,4 +225,9 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
 
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Owner> findAllOwners() throws DataAccessException{
+        return this.ownerRepository.findAll();
+    }
 }

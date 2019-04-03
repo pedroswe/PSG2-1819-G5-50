@@ -19,7 +19,7 @@ public class Donation extends BaseEntity {
 
     @Column(name = "moment")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private LocalDate donationDate;
+    private LocalDate moment;
 
     @ManyToOne
     @JoinColumn(name = "cause_id")
@@ -39,12 +39,12 @@ public class Donation extends BaseEntity {
         this.amount = amount;
     }
    
-    public LocalDate getDonationDate() {
-        return this.donationDate;
+    public LocalDate getMoment() {
+        return this.moment;
     }
 
-    public void setDonationDate(LocalDate donationDate) {
-        this.donationDate = donationDate;
+    public void setMoment(LocalDate donationDate) {
+        this.moment = donationDate;
     }
 
     public Cause getCause() {
