@@ -69,6 +69,10 @@ public interface ClinicService {
 
 	Specialty findSpecialtyByName(String name) throws DataAccessException;
 
+	Double findTotalBudgetAchievedByCauseId(int causeId) throws DataAccessException;
+	
+	Collection<Cause> findAll() throws DataAccessException;
+	
 	Collection<Cause> findAll(Integer id) throws DataAccessException;
 
 	Cause findOne(Integer id) throws DataAccessException;

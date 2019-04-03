@@ -1,5 +1,10 @@
 package org.springframework.samples.petclinic.web;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.service.ClinicService;
@@ -11,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/cause/{ownerId}")
+@RequestMapping(value = { "/cause/{ownerId}", "/cause" })
 public class CauseController {
 
 	@Autowired
@@ -24,8 +29,25 @@ public class CauseController {
 
 		result = new ModelAndView("cause/causeList");
 
-		result.addObject("causes", service.findAll(ownerId));
+		Collection<Cause> causes = new ArrayList<Cause>();
 
+		if (ownerId == 0) {
+			causes = service.findAll();
+		} else {
+			causes = service.findAll(ownerId);
+		}
+		result.addObject("causes", causes);
+		Map<Integer, Double> map = new HashMap<Integer, Double>();
+
+		for (Cause c : causes) {
+			try {
+				Double d = this.service.findTotalBudgetAchievedByCauseId(c.getId());
+				map.put(c.getId(), d);
+			} catch (Throwable oops) {
+				map.put(c.getId(), 0.0);
+			}
+		}
+		result.addObject("map", map);
 		return result;
 	}
 
@@ -76,8 +98,6 @@ public class CauseController {
 				c.setOrganization(cause.getOrganization());
 				this.service.save(c);
 			}
-
-			
 
 			result = new ModelAndView("redirect:/cause/" + ownerId + "/list");
 		}

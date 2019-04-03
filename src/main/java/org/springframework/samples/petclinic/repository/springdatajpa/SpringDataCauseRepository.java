@@ -12,4 +12,5 @@ public interface SpringDataCauseRepository extends CauseRepository, Repository<C
 	
 	@Query("select c from Cause c where c.owner.id = ?1")
 	Collection<Cause> findAll(Integer ownerId) throws DataAccessException;
+	
 }

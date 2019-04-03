@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 
@@ -32,8 +33,7 @@ public class Cause extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-
-    public Owner getOwner() {
+	public Owner getOwner() {
 		return owner;
 	}
 

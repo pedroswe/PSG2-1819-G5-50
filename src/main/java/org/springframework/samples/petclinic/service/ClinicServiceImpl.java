@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Cause;
@@ -30,15 +31,15 @@ import org.springframework.samples.petclinic.repository.CauseRepository;
 import org.springframework.samples.petclinic.repository.DonationRepository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
+import org.springframework.samples.petclinic.repository.SpecialtyRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
-import org.springframework.samples.petclinic.repository.SpecialtyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Mostly used as a facade for all Petclinic controllers
- * Also a placeholder for @Transactional and @Cacheable annotations
+ * Mostly used as a facade for all Petclinic controllers Also a placeholder
+ * for @Transactional and @Cacheable annotations
  *
  * @author Michael Isvy
  */
@@ -70,43 +71,53 @@ public class ClinicServiceImpl implements ClinicService {
         return petRepository.findPetTypes();
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Owner findOwnerById(int id) throws DataAccessException {
-        return ownerRepository.findById(id);
-    }
+	@Override
+	@Transactional(readOnly = true)
+	public Collection<PetType> findPetTypes() throws DataAccessException {
+		return petRepository.findPetTypes();
+	}
 
-    @Override
-    @Transactional(readOnly = true)
-    public Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException {
-        return ownerRepository.findByLastName(lastName);
-    }
+	@Override
+	@Transactional(readOnly = true)
+	public Owner findOwnerById(int id) throws DataAccessException {
+		return ownerRepository.findById(id);
+	}
 
-    @Override
-    @Transactional
-    public void saveOwner(Owner owner) throws DataAccessException {
-        ownerRepository.save(owner);
-    }
+	@Override
+	@Transactional(readOnly = true)
+	public Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException {
+		return ownerRepository.findByLastName(lastName);
+	}
 
+	@Override
+	@Transactional
+	public void saveOwner(Owner owner) throws DataAccessException {
+		ownerRepository.save(owner);
+	}
 
-    @Override
-    @Transactional
-    public void saveVisit(Visit visit) throws DataAccessException {
-        visitRepository.save(visit);
-    }
+	@Override
+	@Transactional
+	public void saveVisit(Visit visit) throws DataAccessException {
+		visitRepository.save(visit);
+	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Pet findPetById(int id) throws DataAccessException {
+		return petRepository.findById(id);
+	}
 
-    @Override
-    @Transactional(readOnly = true)
-    public Pet findPetById(int id) throws DataAccessException {
-        return petRepository.findById(id);
-    }
+	@Override
+	@Transactional
+	public void savePet(Pet pet) throws DataAccessException {
+		petRepository.save(pet);
+	}
 
-    @Override
-    @Transactional
-    public void savePet(Pet pet) throws DataAccessException {
-        petRepository.save(pet);
-    }
+	@Override
+	@Transactional(readOnly = true)
+	public Collection<Vet> findVets() throws DataAccessException {
+		return vetRepository.findAll();
+	}
 
     @Override
     @Transactional(readOnly = true)
@@ -137,12 +148,6 @@ public class ClinicServiceImpl implements ClinicService {
 	public void deleteOwnerById(Integer id) {
 		this.ownerRepository.deleteById(id);
 	}
-    
-    @Override
-    @Transactional
-    public void saveVet(Vet vet) throws DataAccessException {
-        vetRepository.save(vet);
-    }
 
     @Override
     @Transactional(readOnly = true)
