@@ -66,19 +66,19 @@ public class ClinicServiceImpl implements ClinicService {
     }
     
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Collection<PetType> findPetTypes() throws DataAccessException {
         return petRepository.findPetTypes();
     }
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public Owner findOwnerById(int id) throws DataAccessException {
 		return ownerRepository.findById(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException {
 		return ownerRepository.findByLastName(lastName);
 	}
@@ -96,7 +96,7 @@ public class ClinicServiceImpl implements ClinicService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public Pet findPetById(int id) throws DataAccessException {
 		return petRepository.findById(id);
 	}
@@ -120,13 +120,13 @@ public class ClinicServiceImpl implements ClinicService {
 	}
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
 	public void deleteByIdPet(Integer id) {
 		this.petRepository.deleteById(id);
     }
     
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
 	public void deleteByIdVet(Integer id) {
 		this.vetRepository.deleteById(id);
     }
@@ -138,7 +138,7 @@ public class ClinicServiceImpl implements ClinicService {
 	}
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Collection<Specialty> findSpecialtys() throws DataAccessException {
         return this.specialtyRepository.findAll();
     }
@@ -160,13 +160,13 @@ public class ClinicServiceImpl implements ClinicService {
         return this.petRepository.findAll();
     }
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Specialty findSpecialtyByName(String name) throws DataAccessException{
         return this.specialtyRepository.findByName(name);
     }
     
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
 	public Collection<Cause> findAllCausesByOwnerId(Integer ownerId) throws DataAccessException {
 		return this.causeRepository.findAllCausesByOwnerId(ownerId);
 	}
@@ -178,7 +178,7 @@ public class ClinicServiceImpl implements ClinicService {
 	}
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
 	public void saveCause(Cause cause) throws DataAccessException {
 		this.causeRepository.save(cause);
     }
@@ -209,7 +209,7 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Collection<Donation> findDonationsByCauseId(int causeId) throws DataAccessException{
         return this.donationRepository.findDonationsByCauseId(causeId);
     }
@@ -221,14 +221,14 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
-    @Transactional   
+    @Transactional(readOnly = true)   
     public Collection<Cause> findAllCauses() throws DataAccessException {
         return this.causeRepository.findAll();
     }
 
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Collection<Owner> findAllOwners() throws DataAccessException{
         return this.ownerRepository.findAll();
     }
