@@ -82,7 +82,7 @@ public class DonationController {
                 model.put("error", true);
             }
         }
-        return "redirect:/cause/list";       
+        return "redirect:/cause/{causeId}/donations/list";
 	}
 
     // LIST
