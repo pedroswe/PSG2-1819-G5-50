@@ -92,7 +92,7 @@ CREATE INDEX causes_name ON causes (owner_id);
 
 CREATE TABLE donation (
   id          INTEGER IDENTITY PRIMARY KEY,
-  amount  NUMERIC NOT NULL,
+  amount  NUMERIC(10,2) NOT NULL,
   moment DATE NOT NULL,
   cause_id INTEGER NOT NULL,
   owner_id INTEGER NOT NULL
