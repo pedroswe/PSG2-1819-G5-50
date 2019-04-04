@@ -19,9 +19,9 @@
             <c:if test="${donation['new']}">New </c:if> Donation
         </h2>
         <form:form modelAttribute="donation" class="form-horizontal">
-            <c:out value="${cause}" />
-            <input type="hidden" name="cause" value="${cause}" />
-            <input type="hidden" name="moment" value="${moment}" />
+            
+            <input type="hidden" name="cause" value="cause" />
+            <input type="hidden" name="moment" value="moment" />
             <div class="control-group">
                 <petclinic:selectField label="Donator" name="donator" names="${owners}" size="5" />
             </div>
@@ -31,7 +31,7 @@
             <div class="form-group">
                 <button class="btn btn-default" type="submit">Save Donation</button>
                 <spring:url value="/cause/{causeId}/donations/list" var="causeUrl">
-                    <spring:param name="causeId" value="causeId" />
+                    <spring:param name="causeId" value="${cause.id}" />
                 </spring:url>
                 <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Go back</a>
             </div>

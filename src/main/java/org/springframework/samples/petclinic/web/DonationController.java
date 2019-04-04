@@ -42,14 +42,14 @@ public class DonationController {
     
     // GET Donation
     @RequestMapping(value = "/cause/{causeId}/donations/new", method = RequestMethod.GET)
-	public String initCreationForm(Map<String, Object> model) {
+	public String initCreationForm(@PathVariable("causeId") int causeId, Map<String, Object> model) {
         Collection<Owner> owners = this.clinicService.findAllOwners();
-        //Cause cause = this.clinicService.findCauseById(causeId);
+        Cause cause = this.clinicService.findCauseById(causeId);
 		Donation donation = new Donation();
         
         model.put("donation", donation);
         model.put("owners", owners);
-        //model.put("cause", cause);
+        model.put("cause", cause);
 		return VIEWS_DONATION_CREATE_OR_UPDATE_FORM;
     }
 
