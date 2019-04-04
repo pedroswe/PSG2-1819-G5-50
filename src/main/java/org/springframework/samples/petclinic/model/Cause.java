@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 
@@ -33,51 +32,40 @@ public class Cause extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-	public Owner getOwner() {
+    // GETTERS --------------------------------------------------------------------------
+    
+    public String getName() {
+        return this.name;
+    }
+    public String getDescription() {
+        return this.description;
+    }
+    public Double getBudgetTarget() {
+        return this.budgetTarget;
+    }
+    public String getOrganization() {
+        return this.organization;
+    }
+    public Owner getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Owner owner) {
-		this.owner = owner;
-	}
+
+    // SETTERS --------------------------------------------------------------------------
 
 	public void setName(String name) {
         this.name = name;
     }
-
-    public String getName() {
-        return this.name;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getDescription() {
-        return this.description;
-    }
-
     public void setBudgetTarget(Double budgetTarget) {
         this.budgetTarget = budgetTarget;
     }
-
-    public Double getBudgetTarget() {
-        return this.budgetTarget;
-    }
-
     public void setOrganization(String organization) {
         this.organization = organization;
     }
-
-    public String getOrganization() {
-        return this.organization;
-    }
-
-    public void getStatus(boolean status) {
-        status=false;
-        if(budgetTarget <3000){
-            status=true;
-        }
-       
-    }
+    public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
 }
