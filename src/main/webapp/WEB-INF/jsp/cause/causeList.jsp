@@ -60,12 +60,16 @@
                         <c:choose>
                             <c:when test="${cause.budgetTarget >  map.get(cause.id)}">
                                 <td>
-                                    <spring:message code="donation.donate" />
+                                    <span style="color:blueviolet">
+                                        <spring:message code="donation.donate" />
+                                    </span>
                                 </td>
                             </c:when>
                             <c:otherwise>
                                 <td>
-                                    <spring:message code="donation.success" />
+                                    <span style="color:green">
+                                        <spring:message code="donation.success" />
+                                    </span>
                                 </td>
                             </c:otherwise>
                         </c:choose>
