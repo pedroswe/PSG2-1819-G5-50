@@ -23,7 +23,9 @@
                     <c:if test="${ownerId > 0}">
                         <th>Edit</th>
                     </c:if>
-                    <th>Register a donation</th>
+                    <th>Details</th>
+                    <th>Status</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -49,21 +51,34 @@
                                 <a href="/cause/${ownerId}/edit/${cause.id}">Edit</a>
                             </td>
                         </c:if>
-                        <c:if test="${cause.budgetTarget >  map.get(cause.id)}">
-                            <td>
-                                <spring:url value="/cause/{causeId}/donations/list" var="donateToCause">
-                                    <spring:param name="causeId" value="${cause.id}" />
-                                </spring:url> <a href="${fn:escapeXml(donateToCause)}">Donate</a>
-                            </td>
-                        </c:if>
 
-
+                        <td>
+                            <spring:url value="/cause/{causeId}/donations/list" var="donateToCause">
+                                <spring:param name="causeId" value="${cause.id}" />
+                            </spring:url> <a href="${fn:escapeXml(donateToCause)}">Details</a>
+                        </td>
+                        <c:choose>
+                            <c:when test="${cause.budgetTarget >  map.get(cause.id)}">
+                                <td>
+                                    <spring:message code="donation.donate" />
+                                </td>
+                            </c:when>
+                            <c:otherwise>
+                                <td>
+                                    <spring:message code="donation.success" />
+                                </td>
+                            </c:otherwise>
+                        </c:choose>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
         <c:if test="${ownerId > 0}">
             <a href="/cause/${ownerId}/create">Create a cause</a>
+            &nbsp;
+            <spring:url value="/owners/${ownerId}" var="causeUrl">
+            </spring:url>
+            <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Go back</a>
         </c:if>
     </jsp:body>
 </petclinic:layout>

@@ -11,8 +11,50 @@
 <petclinic:layout pageName="showCause">
 
     <jsp:body>
-        <h2>Cause Donation List</h2>
 
+        <h2>Cause Details</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Burget Target</th>
+                    <th>Total</th>
+                    <th>Organization</th>
+                    <c:if test="${ownerId > 0}">
+                        <th>Edit</th>
+                    </c:if>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <c:out value="${cause.name}" />
+                    </td>
+                    <td>
+                        <c:out value="${cause.description}" />
+                    </td>
+                    <td>
+                        <c:out value="${cause.budgetTarget}" />
+                    </td>
+                    <td>
+                        <c:out value="${totalBudgetAchieved}" />
+                    </td>
+                    <td>
+                        <c:out value="${cause.organization}" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <br>
+
+
+        <h2>Cause Donation List</h2>
 
         <table class="table table-striped">
             <thead>
