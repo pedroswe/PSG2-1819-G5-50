@@ -21,8 +21,8 @@ public class CauseController {
 
 	@Autowired
 	private ClinicService clinicService;
-	
-	//LIST general
+
+	// LIST general
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 
@@ -39,7 +39,11 @@ public class CauseController {
 		for (Cause c : causes) {
 			try {
 				Double d = this.clinicService.findTotalBudgetAchievedByCauseId(c.getId());
-				map.put(c.getId(), d);
+				if (d == null) {
+					map.put(c.getId(), 0.0);
+				} else {
+					map.put(c.getId(), d);
+				}
 			} catch (Throwable oops) {
 				map.put(c.getId(), 0.0);
 			}
@@ -48,7 +52,7 @@ public class CauseController {
 		return result;
 	}
 
-	//LIST FOR OWNER
+	// LIST FOR OWNER
 	@RequestMapping(value = "/{ownerId}/list", method = RequestMethod.GET)
 	public ModelAndView listOwner(@PathVariable("ownerId") Integer ownerId) {
 
@@ -69,7 +73,11 @@ public class CauseController {
 		for (Cause c : causes) {
 			try {
 				Double d = this.clinicService.findTotalBudgetAchievedByCauseId(c.getId());
-				map.put(c.getId(), d);
+				if (d == null) {
+					map.put(c.getId(), 0.0);
+				} else {
+					map.put(c.getId(), d);
+				}
 			} catch (Throwable oops) {
 				map.put(c.getId(), 0.0);
 			}
@@ -78,7 +86,8 @@ public class CauseController {
 		return result;
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	//CREATE
+	@RequestMapping(value = "{ownerId}/create", method = RequestMethod.GET)
 	public ModelAndView create(@PathVariable("ownerId") Integer ownerId) {
 
 		ModelAndView result;
@@ -91,8 +100,9 @@ public class CauseController {
 		result.addObject("requestURI", "../../cause/" + ownerId + "/edit/" + 0);
 		return result;
 	}
-
-	@RequestMapping(value = "/edit/{causeId}", method = RequestMethod.GET)
+	
+	//GET edit
+	@RequestMapping(value = "{ownerId}/edit/{causeId}", method = RequestMethod.GET)
 	public ModelAndView show(@PathVariable("causeId") int id, @PathVariable("ownerId") int ownerId) {
 
 		ModelAndView result;
@@ -104,26 +114,25 @@ public class CauseController {
 		return result;
 	}
 
-	@RequestMapping(value = "/edit/{causeId}", method = RequestMethod.POST)
+	//POST edit
+	@RequestMapping(value = "{ownerId}/edit/{causeId}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable("ownerId") Integer ownerId, @PathVariable("causeId") Integer causeId,
 			Cause cause, BindingResult binding) {
 
 		ModelAndView result;
-
+		cause.setOwner(this.clinicService.findOwnerById(ownerId));
+		if(causeId!=0){
+			cause.setId(causeId);
+		}
 		if (binding.hasErrors()) {
 			result = new ModelAndView("cause/causeEdit");
 			result.addObject("cause", cause);
 		} else {
 			if (causeId == 0) {
-				cause.setOwner(this.clinicService.findOwnerById(ownerId));
+				//cause.setOwner(this.clinicService.findOwnerById(ownerId));
 				this.clinicService.saveCause(cause);
 			} else {
-				Cause c = this.clinicService.findCauseById(causeId);
-				c.setName(cause.getName());
-				c.setDescription(cause.getDescription());
-				c.setBudgetTarget(c.getBudgetTarget());
-				c.setOrganization(cause.getOrganization());
-				this.clinicService.saveCause(c);
+				this.clinicService.saveCause(cause);
 			}
 
 			result = new ModelAndView("redirect:/cause/" + ownerId + "/list");

@@ -8,9 +8,9 @@
 
 <petclinic:layout pageName="causeEdit">
 	<h2>New Cause</h2>
-	<form:form modelAttribute="cause" class="form-horizontal"
-		action="${requestURI}">
+	<form:form modelAttribute="cause" class="form-horizontal" action="${requestURI}">
 		<div class="form-group has-feedback">
+			<input type="hidden" name="owner" value="${owner}"/>
 			<petclinic:inputField label="Name" name="name" />
 			<petclinic:inputField label="Description" name="description" />
 			<petclinic:inputField label="Burget Target" name="budgetTarget" />

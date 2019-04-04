@@ -92,6 +92,10 @@ public class DonationController {
         Collection<Donation> donationsVictor = clinicService.findDonationsByCauseId(causeId);
         Cause cause = this.clinicService.findCauseById(causeId);
         Double totalBudgetAchieved = this.clinicService.findTotalBudgetAchievedByCauseId(causeId);
+        if (totalBudgetAchieved == null){
+            totalBudgetAchieved = 0.0;
+        }
+
         ModelAndView result = new ModelAndView("/cause/showCause");
         result.addObject("donationsVictor", donationsVictor);
         result.addObject("totalBudgetAchieved", totalBudgetAchieved);

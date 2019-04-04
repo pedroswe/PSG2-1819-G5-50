@@ -39,7 +39,10 @@
             </tbody>
         </table>
         <c:if test="${cause.budgetTarget >  totalBudgetAchieved}">
-            <a href="new">Register a donation</a> 
+            <a href="new">Register a donation</a>
         </c:if>
+        <spring:url value="/cause/list" var="causeUrl">
+        </spring:url>
+        <a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Go back</a>
     </jsp:body>
 </petclinic:layout>
