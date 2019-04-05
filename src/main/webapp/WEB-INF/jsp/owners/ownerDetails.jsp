@@ -43,7 +43,11 @@
 	</spring:url>
 	<a href="${fn:escapeXml(addUrl)}" class="btn btn-default">Add New
 		Pet</a>
-
+	<spring:url value="/cause/{ownerId}/list" var="listCauseUrl">
+		<spring:param name="ownerId" value="${owner.id}" />
+	</spring:url>
+	<a href="${fn:escapeXml(listCauseUrl)}" class="btn btn-default">List
+		Causes</a>
 	<br />
 	<br />
 	<br />

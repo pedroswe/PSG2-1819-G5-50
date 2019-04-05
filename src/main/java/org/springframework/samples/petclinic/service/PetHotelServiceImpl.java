@@ -23,6 +23,7 @@ import org.springframework.samples.petclinic.model.PetHotel;
 import org.springframework.samples.petclinic.repository.PetHotelRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 /**
  * Mostly used as a facade for all Petclinic controllers
@@ -48,8 +49,15 @@ public class PetHotelServiceImpl implements PetHotelService {
 
     @Override
     @Transactional
-    public void save(PetHotel petHotel) throws DataAccessException {
-        petHotelRepository.save(petHotel);
+    public boolean save(PetHotel petHotel) throws DataAccessException {
+        Assert.isTrue(petHotel.getInitDate().isBefore(petHotel.getEndDate()), "Init date must be before end date");
+        Integer count = petHotelRepository.bookingCount(petHotel.getPet().getId(), petHotel.getInitDate(), petHotel.getEndDate());
+        boolean canInsert = count == 0;
+        if(canInsert){
+            petHotelRepository.save(petHotel);
+        }
+
+        return canInsert;
     }
 
     @Override

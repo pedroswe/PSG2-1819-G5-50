@@ -43,6 +43,8 @@
             <set>
                 <bean class="org.springframework.samples.petclinic.web.PetTypeFormatter"/>
                 <bean class="org.springframework.samples.petclinic.web.PetFormatter"/>
+                <bean class="org.springframework.samples.petclinic.web.OwnerFormatter"/>
+            
             </set>
         </property>
     </bean>

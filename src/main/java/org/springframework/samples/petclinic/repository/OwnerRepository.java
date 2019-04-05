@@ -61,4 +61,6 @@ public interface OwnerRepository {
     void save(Owner owner) throws DataAccessException;
 
     void deleteById(Integer id);
+
+    Collection<Owner> findAll() throws DataAccessException;
 }
