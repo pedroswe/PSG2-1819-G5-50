@@ -22,7 +22,7 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 3         |    :neutral_face:  (Meaning that I feel I had to struggle, but the assigned work was fair and the day productive)          |:fearful:
 | Day 4         |    :worried: (Meaning that I feel I have serious difficulties to accomplish the task, or the productivity of my day was awful)           |
 | Day 5         |    :fearful:   (I´m desperate, I need help)        |
-| Day 6         |   :moon: Only [Ángel](https://github.com/angel96) can use this emoji. |
+| Day 6         |   :full_moon_with_face: Only [Ángel](https://github.com/angel96) can use this emoji. |
 
 ## Sprint Template
 
@@ -41,10 +41,10 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 10        |  30/03/2019   |  :smiley:      |        -       |        -       |       -        |       -        |       -        |
 | Day 11        |  31/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
 | Day 12        |  01/04/2019   |       -        |  :smiley:      |        -       |       -        |       -        |       -        |
-| Day 13        |  02/04/2019   |       -        |        -       |     :moon:     |       -        |       -        |       -        |
+| Day 13        |  02/04/2019   |       -        |        -       |:full_moon_with_face:     |       -        |       -        |       -        |
 | Day 14        |  03/04/2019   |   :smiley:     |   :smiley:     |        -       |    :worried:   |:neutral_face:  |:neutral_face:  |
-| Day 15        |  04/04/2019   |       -        |        -       |     :moon:     |       -        |:neutral_face:  |:neutral_face:  |
-| Day 16        |  05/04/2019   |   :smiley:     |        -       |     :moon:     |       -        |:neutral_face:  |:neutral_face:  |
+| Day 15        |  04/04/2019   |       -        |        -       |:full_moon_with_face:     |       -        |:neutral_face:  |:neutral_face:  |
+| Day 16        |  05/04/2019   |   :smiley:     |        -       |:full_moon_with_face:     |       -        |:neutral_face:  |:neutral_face:  |
 | Day 17        |  06/04/2019   |       -        |        -       |        -       |       -        |       -        |:neutral_face:  |
 | Day 18        |  07/04/2019   |       -        |        -       |        -       |       -        |       -        |        -       |
 | Day 19        |  08/04/2019   |       -        |        -       |        -       |       -        |       -        |        -       |
