@@ -10,7 +10,7 @@
 	<h2>New Cause</h2>
 	<form:form modelAttribute="cause" class="form-horizontal" action="${requestURI}">
 		<div class="form-group has-feedback">
-			<input type="hidden" name="owner" value="${owner}"/>
+			<input type="hidden" name="owner" value="${owner}" />
 			<petclinic:inputField label="Name" name="name" />
 			<petclinic:inputField label="Description" name="description" />
 			<petclinic:inputField label="Burget Target" name="budgetTarget" />
@@ -19,6 +19,9 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button class="btn btn-default" type="submit">Submit</button>
+				<spring:url value="/cause/${owner.id}/list" var="causeUrl">
+				</spring:url>
+				<a class="btn btn-default" href="${fn:escapeXml(causeUrl)}">Go back</a>
 			</div>
 		</div>
 	</form:form>

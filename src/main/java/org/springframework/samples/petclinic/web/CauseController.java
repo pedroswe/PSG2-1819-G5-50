@@ -97,20 +97,20 @@ public class CauseController {
 		c.setId(0);
 
 		result.addObject("cause", c);
-		result.addObject("requestURI", "../../cause/" + ownerId + "/edit/" + 0);
+		result.addObject("requestURI", "/cause/" + ownerId + "/edit/" + 0);
 		return result;
 	}
 	
 	//GET edit
 	@RequestMapping(value = "{ownerId}/edit/{causeId}", method = RequestMethod.GET)
-	public ModelAndView show(@PathVariable("causeId") int id, @PathVariable("ownerId") int ownerId) {
+	public ModelAndView show(@PathVariable("causeId") int causeId, @PathVariable("ownerId") int ownerId) {
 
 		ModelAndView result;
 
 		result = new ModelAndView("cause/causeEdit");
 
-		result.addObject("cause", clinicService.findCauseById(id));
-		result.addObject("requestURI", "../edit/" + id);
+		result.addObject("cause", clinicService.findCauseById(causeId));
+		result.addObject("requestURI", "/cause/" + ownerId + "/edit/" + causeId);
 		return result;
 	}
 
@@ -120,7 +120,13 @@ public class CauseController {
 			Cause cause, BindingResult binding) {
 
 		ModelAndView result;
+		if (cause.getBudgetTarget() == null || cause.getDescription()== "" || cause.getName()=="" || cause.getOrganization()==""){
+			return this.create(ownerId);
+		}
+		
 		cause.setOwner(this.clinicService.findOwnerById(ownerId));
+		
+
 		if(causeId!=0){
 			cause.setId(causeId);
 		}
