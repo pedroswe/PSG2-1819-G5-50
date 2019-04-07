@@ -14,6 +14,7 @@
 | Fecha     |    |Revisión |
 |-----------|----|----------|
 |07/04/2019 |    |v01e00|
+|07/04/2019 |    |v01e01|
 
 Grupo de Prácticas: G5-50
 
@@ -58,6 +59,15 @@ Se seguirá adjuntando los documentos del proyecto con la [política de nombrado
 
 También haremos commits conforme a la [política de commits](https://github.com/gii-is-psg2/PSG2-1819-G5-50/wiki/Configuration-Management-System#message-policy-for-git-commits) descrita en la wiki, ya que hemos apreciado mejoría en la localización de archivos en los commits.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Reparto de puntos
 
 | Miembro |     | Rol | | Asiste | | Puntos |
@@ -65,7 +75,7 @@ También haremos commits conforme a la [política de commits](https://github.com
 | González Valiñas, Pedro Agustín |  | Scrum Master | | Sí | | 5.4|
 | Delgado Luna, Ángel             |  | Team member | | Sí | | 5.4|
 | Novoa Montero, Ana María        |  | Team member | | Sí | | 5.4|
-| Pérez Capitán, Sergio           |  | Team member | | Sí | | 5.4|
+| Pérez Capitán, Sergio           |  | Team member | | No | | 5.4|
 | Rosado Bornes, Víctor           |  | Team member | | No | | 3|
 | Sánchez Hipona, Antonio         |  | Team member | | Sí | | 5.4|
 
