@@ -2,7 +2,8 @@
 ## Escuela Técnica Superior de Ingeniería Informática
 &nbsp;
 &nbsp;
-# L2 - Configuration Management
+# L3 - Measurement
+
 
 ![logo us](../images/L2-8-image-logo_us_300.gif)
 
@@ -14,6 +15,8 @@
 | Fecha     |    |Revisión |
 |-----------|----|----------|
 |07/04/2019 |    |v01e00|
+|07/04/2019 |    |v01e01|
+|07/04/2019 |    |v01e02|
 
 Grupo de Prácticas: G5-50
 
@@ -27,19 +30,38 @@ Grupo de Prácticas: G5-50
 | Sánchez Hipona, Antonio         |  | Team member |
 
 &nbsp;
+# Análisis del Código Fuente y Métricas Asociadas
 
 | Índice |
 |--------|
-| [1. Introducción](#1-introduccion) |
-| [2. Objetivo](#2-objetivo) |
-| [3. Contenido](#3-contenido) |
+| [1. Métricas del dashboard de Sonar Cloud](#1-métricas-del-dashboard-de-sonar-cloud) |
+| [2. Bugs y malos olores](#2-bugs-y-malos-olores) |
+| [3. Conclusiones](#3-conclusiones) |
 
-![DASHBOARD SPRINT 1](../images/L3-29-image-sonar_cloud_dashboard_sprint_1.png)
+# 1. Métricas del dashboard de Sonar Cloud
 
-![DASHBOARD SPRINT 2](../images/L3-29-image-sonar_cloud_dashboard_sprint_2.png)
+En el dashboard aparecen una serie de métricas que nos ayudan a entender el estado de la calidad del código del proyecto.
+ - __Bugs:__ Cantidad de bugs. Un bug código que puede llegar a generar un fallo de funcionamiento de la aplicación.
+ - __Vulnerabilities:__ Cantidad de vulnerabilidades. Una vulnerabilidad es código que puede generar un fallo de seguridad en la aplicación.
+ - __Debt:__ Estimación de la cantidad de tiempo necesario para arreglar los malos olores.
+ - __Code Smells:__ Cantidad de malos olores encontrados. Los malos olores son sentencias de código que dificultan la legibilidad y mantenibilidad del mismo.
+ - __Coverage:__ Porcentaje de sentencias de código cubiertas
+ - __Unit Tests:__ Cantidad de tests unitarios
+ - __Duplications:__ Porcentaje de código duplicado.
+ - __Duplicated Blocks:__ Cantidad de bloques de código que han sido duplicados.
+
+## Sprint 1
+
+<img src="../images/L3-29-image-sonar_cloud_dashboard_sprint_1.png" alt="drawing" width="500"/>
+
+<br><br>
+
+## Sprint 2
+
+<img src="../images/L3-29-image-sonar_cloud_dashboard_sprint_2.png" alt="drawing" width="500"/>
 
 
-# Análisis del Código Fuente y Métricas Asociadas
+# 2. Bugs y malos olores
 
 Los bugs potenciales y malos olores que se describen a continuación están agrupados por el tipo de error y ordenados por la gravedad de los mismos.
 
@@ -84,3 +106,9 @@ Gravedad | Cantidad | Tipo de olor | Descripción | Solución
 <span style="color:green">Menor</span> | 8 | Composed ```"@RequestMapping"``` variants should be preferred | Es debido a que desde la versión 4.3 del framework de Spring se han introducido variantes de este tipo de anotaciones para representarlas mejor semánticamente | Sustituir ```@RequestMapping(method = RequestMethod.GET)``` por ```@GetMapping``` y ```@RequestMapping(method = RequestMethod.POST)``` por ```@PostMapping```
 <span style="color:green">Menor</span> | 4 | The diamond operator ("<>") should be used | Es debido a que desde Java 7 no es necesario declarar en el constructor el tipo entre ```<>``` ya que el compilador lo asignará automáticamente <br> __Ejemplo:__ ```List<String> strings = new ArrayList<String>();``` | Eliminar la declaración del tipo en el constructor<br>__Ejemplo:__```List<String> strings = new ArrayList<>();```
 <span style="color:green">Menor</span> | 2 | Unnecessary imports should be removed | Es debido a que importaciones innecesarias en varias clases | Eliminar estas importaciones innecesarias
+
+# 3. Conclusiones
+
+La mayoría de bugs y malos olores que se han introducido en la aplicación pueden deberse a que no se ha realizado refactorización de código, y son fáciles de corregir.
+
+Tiene sentido que el porcentaje de sentencias de código que cubren los tests sea menor, ya que no se han añadido más.
