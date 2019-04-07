@@ -22,14 +22,29 @@ In the retrospective meeting, the team has a discussion about those results.
 | Day 3         |    :neutral_face:  (Meaning that I feel I had to struggle, but the assigned work was fair and the day productive)          |:fearful:
 | Day 4         |    :worried: (Meaning that I feel I have serious difficulties to accomplish the task, or the productivity of my day was awful)           |
 | Day 5         |    :fearful:   (I´m desperate, I need help)        |
-
+| Day 6         |   :full_moon_with_face: Only [Ángel](https://github.com/angel96) can use this emoji. |
 
 ## Sprint Template
 
-| Day           | [Member A]    | [Member B]     | [Member C]     | [Member D]     | [Member E]     | [Member F]     |
-| ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
-| Day 1         |               |                |                |                |                |                |
-| Day 2         |               |                |                |                |                |                |
-| Day 3         |               |                |                |                |                |                |
-| Day 4         |               |                |                |                |                |                |
-...
+| Day           | Date | [Ana](https://github.com/ananovmon)    | [Capi](https://github.com/Capi9888)     | [Ángel](https://github.com/angel96)     | [Víctor](https://github.com/SiiNerGia)     | [Antonio](https://github.com/antonihipona)     | [Pedro](https://github.com/pedroswe)     |
+| ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  | -------------  |
+| Day 1         |  20/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 2         |  21/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 3         |  22/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 4         |  23/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 5         |  24/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 6         |  25/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 7         |  26/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 8         |  27/03/2019   |    :smiley:    |        -       |        -       |       -        |:neutral_face:  |    :smiley:    |
+| Day 9         |  28/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 9         |  29/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 10        |  30/03/2019   |  :smiley:      |        -       |        -       |       -        |       -        |       -        |
+| Day 11        |  31/03/2019   |       -        |        -       |        -       |       -        |       -        |       -        |
+| Day 12        |  01/04/2019   |       -        |  :smiley:      |        -       |       -        |       -        |       -        |
+| Day 13        |  02/04/2019   |       -        |        -       |:full_moon_with_face:     |       -        |       -        |       -        |
+| Day 14        |  03/04/2019   |   :smiley:     |   :smiley:     |        -       |    :worried:   |:neutral_face:  |:neutral_face:  |
+| Day 15        |  04/04/2019   |       -        |        -       |:full_moon_with_face:     |       -        |:neutral_face:  |:neutral_face:  |
+| Day 16        |  05/04/2019   |   :smiley:     |        -       |:full_moon_with_face:     |       -        |:neutral_face:  |:neutral_face:  |
+| Day 17        |  06/04/2019   |       -        | :smiley:       |        -       |       -        |       -  | -  |
+| Day 18        |  07/04/2019   |       -        |        -       |        -       |       -        |       :neutral_face:        |       :neutral_face:       |
+| Day 19        |  08/04/2019   |       -        |        -       |        -       |       -        |       -        |        -       |
