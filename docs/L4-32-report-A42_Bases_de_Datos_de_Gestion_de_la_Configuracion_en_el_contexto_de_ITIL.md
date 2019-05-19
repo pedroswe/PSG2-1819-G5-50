@@ -2,7 +2,7 @@
 ## Escuela Técnica Superior de Ingeniería Informática
 &nbsp;
 &nbsp;
-# L4 - Measurement  ITIL
+# L4 - ITIL
 
 
 ![logo us](../images/L2-8-image-logo_us_300.gif)
@@ -14,8 +14,8 @@
 
 | Fecha     |    |Revisión |
 |-----------|----|----------|
-|15/05/2019 |    |v01e00|
-
+|19/05/2019 |    |v01e00|
+|20/05/2019 |    |v01e01|
 
 Grupo de Prácticas: G5-50
 
@@ -28,7 +28,6 @@ Grupo de Prácticas: G5-50
 | Rosado Bornes, Víctor           |  | Team member |
 | Sánchez Hipona, Antonio         |  | Team member |
 
-&nbsp;
 # Bases de Datos de Gestión de la Configuración en el contexto de ITIL
 
 | Índice |
@@ -58,14 +57,17 @@ iTop, que es un CMDB (Base de datos de gestión de la configuración), es un sof
 Los softwares de CMDB son importantes y necesarios en una empresa ya que a medida que va creciendo la empresa se hace más difícil llevar un registro de cosas como las especificaciones de hardware de cada equipo dentro de la empresa, el software que tiene instalado cada equipo, si alguno de esos equipos tiene alguna clase de problema, si está disponible para asignárselo a algún trabajador o ya esta en uso, etc. Llevar este tipo de registro es especialmente importante si el tamaño de la empresa es bastante grande. Además, también permite hacer un análisis de impacto, y saber si nuestra empresa cuenta con los recursos informáticos necesarios para poder realizar ciertas tareas. Por ejemplo, a una empresa le piden diseñar un cartel publicitario. ¿Dispone esa empresa de algún ordenador con Photohsop? ¿En que ordenadores? ¿Quién los tiene? ¿Hasta cuando dura la licencia? ¿Las pantallas del PC que tiene Photosop son suficientemente buenas? Todo esto podemos verlo fácilmente mediante el uso de un CMDB.
 
 
-<br><br>
-
-
 ## 3. Structure of the CMDB, including some examples of the identified Configurable Items
 
 La CMDB de nuestra organización está compuesta por una serie de Elementos de Configuración(EC) de tipo físico, que hace referencia a los componentes electrónicos que forman parte del entorno de trabajo, herramientas tecnológicas que ayudan a la correcta prestación de un servicio requerido: 
 - PCs con información referente al Sistema Operativo, CPU, RAM, marca y modelo, etc
 - Periféricos en los que se incluyen: GPU, monitores, con su respectiva información
+
+<img src="../images/L4-35-image-example_laptop.png" alt="drawing" width="600"/>
+
+<br>
+
+<img src="../images/L4-35-image-example_peripheral.png" alt="drawing" width="300" height="300"/>
 
 También cuenta con EC de tipo lógico, es decir, la instalación software de nuestro equipo de trabajo, concretando para cada miembro del equipo, los programas computacionales con los que desarrollamos y satisfacemos las demandas del cliente, a los que están estrechamente relacionado los EC conceptuales, como son las licencias contratadas por nuestra organización para el uso de dichos programas y las garantías que se nos ofrecen por contratar dichos servicios. 
 EC lógicos:
@@ -73,29 +75,35 @@ EC lógicos:
 - Software de PC: VSCODE, Office 365, Git, Eclipse, etc
 - Máquina virtual
 
-<br>
+<img src="../images/L4-35-image-example_software.png" alt="drawing" width="600"/>
+
+<img src="../images/L4-35-image-example_database_software.png" alt="drawing" width="600"/>
+
+A continuación, una captura con el listado completo de los elementos de configuración de nuestra CMDB.
+
+<img src="../images/L4-35-image-example_registered_elements.png" width="600"/>
+
+<br><br><br>
 
 ## 4. Listing of the contents of the Definitive Software Library (DSL), including the estimated cost of the sofware contained in the DSL
 
 ### Contenido:
 <img src="../images/L4-32-image-definitive_software_library.png" alt="drawing" width="600"/>
 
-### Estimated cost:
-We are students and we chose the software in de DSL because we have free access to it, so costs are 0.
+### Coste estimado:
+Somos estudiantes y elegimos el software del DSL porque es gratuito, así que el coste es 0 €.ts are 0.
 
 
-<br><br><br><br><br>
+<br>
 
 ## 5. An export of the CMDB
 Hemos exportado la CMDB y la hemos adjuntado al repositorio. Puede descargarse desde [nuestro repositorio](https://github.com/gii-is-psg2/PSG2-1819-G5-50/blob/master/docs/EC_Funcional_Export.csv).
 
 Aunque intentaremos añadirlo como adjunto al PDF.
 
-<br>
+<br><br><br><br><br><br><br><br><br>
 
 ## 6. Report with the solutions provided to the service requests
-
-<br>
 
 ### Pregunta 1.
 1. Se desea prestar un servicio a una empresa X, la cual funciona con la norma ISO 6969, que establece que todos los equipos hardware deben tener una garantía mínima de dos años.
@@ -104,8 +112,6 @@ Aunque intentaremos añadirlo como adjunto al PDF.
 
 NO podemos atender a la empresa porque ninguno de nuestros pcs cumple con el requerimiento.
 
-<br>
-
 ### Pregunta 2.
 2. Se desea prestar un servicio de gestión de imágenes por satélite, para ello es necesario instalar un software bajo Windows que funcione en resoluciones de pantallas superiores a 1920 x 1080.
 
@@ -113,8 +119,6 @@ NO podemos atender a la empresa porque ninguno de nuestros pcs cumple con el req
 <img src="../images/L4-40-image-problem_2b.png" alt="drawing" width="600"/>
 
 Sí, Pedro y Capi tienen pantallas de 4K.
-
-<br><br><br><br><br><br>
 
 ### Pregunta 3.
 
@@ -158,7 +162,7 @@ Indique los cambios a realizar en su DSL.
 
 <img src="../images/L4-40-image-problem_5.png" alt="drawing" width="600"/>
 
-Incluir el software necesaario.
+Incluir el software necesario.
 
 ### Pregunta 6.
 
@@ -168,8 +172,6 @@ Añadir Microsoft Teams a la DSL, consultar la disponibilidad y evaluarla en el 
 
 Quitamos Gitter.
 Meter Microsoft Teams en todos los sistemas, sin problemas de compatibilidad porque todos los pcs tienen Windows 10.
-
-A continuación de muestra el gráfico del Cycle Time.
 
 <img src="../images/L4-40-image-problem_6.png" alt="drawing" width="600"/>
 
