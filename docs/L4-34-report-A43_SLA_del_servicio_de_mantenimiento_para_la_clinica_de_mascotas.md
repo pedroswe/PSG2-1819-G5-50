@@ -83,8 +83,15 @@ Teniendo en cuenta los sprints anteriores, hemos obtenido la siguiente tabla en 
 |DONATION - views and controllerPSG2-1819-G5-50 #27	| Mar 22	| Apr 4	| 13	| 13 |
 |Validate Booking CreationPSG2-1819-G5-50 #19	| Mar 20	| Apr 4 | 	15	| 5 |
 
+En la siguiente imagen, se muestra una representación de campana de gauss para indicar que incluso en el caso de 99,7% se quedan 4 puntos o issues fuera del compromiso.
 
 <img src="../images/L4-38-image-gauss_bell.png" alt="drawing" width="600"/>
 
+En este otro gráfico, equivalente al anterior, se puede apreciar mucho mejor que efectivamente, no se cumpliría con 99,7%.
 
 <img src="../images/L4-38-image-planar_probability_density.png" alt="drawing" width="600"/>
+
+
+Por este motivo, podríamos declarar que nuestro servicio sería prestado con un 99,7% de garantía con respecto a nuestra planificación y puntos de historia. Además, en ese grado de garantía sólo hay 4 puntos que no entran, lo cual sugiere que la penalización no debe ser muy elevada.
+
+Concluyendo, al tener sólo un incumpliento del 0,3% podríamos decir que cumplimos con el 99,7% ya que la penalización del 0,3% no será muy elevada.
